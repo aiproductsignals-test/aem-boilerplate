@@ -1,0 +1,29 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "primary font: fraunces",
+        "createdAt": "2026-09-10T02:32:48.977Z",
+        "reason": "Fraunces is the captured display face, pinned by stardust Mode A. prototype/SKILL.md Discipline 6 explicitly exempts Mode A renders with captured families pinned from the reflex-reject font check - the family is inherited evidence, not a reflex pick."
+      },
+      {
+        "rule": "overused-font",
+        "value": "fraunces",
+        "createdAt": "2026-09-10T03:18:39.259Z",
+        "reason": "Fraunces is the CAPTURED display face of the source site (stardust/current/_brand-extraction.json type.families), pinned by stardust Mode A \u2014 it is inherited evidence, not a reflex pick. prototype/SKILL.md Discipline 6 explicitly exempts Mode A renders with captured families pinned from the reflex-reject font check. Recorded as a brand-faithful inversion in DESIGN.json."
+      },
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": [
+          "content/*.html"
+        ],
+        "createdAt": "2026-09-10T03:19:12.945Z",
+        "reason": "Model verified before suppressing: EDS content pages are BODY FRAGMENTS with no <head> by design \u2014 the delivery pipeline injects head.html and styles.css. Scanned standalone they carry no stylesheet, so every text falls back to browser-default rgb(0,0,0); the reported colour is the absence of the stylesheet, not an authored value. Verified on the served page (localhost:3000/qa/page.html) with the real foundation applied: 0 computed contrast failures and every text resolving to the brand ink tokens. Scoped to content/ only \u2014 styles/ and blocks/ still enforce the rule."
+      }
+    ]
+  }
+}
