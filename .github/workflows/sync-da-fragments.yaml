@@ -1,20 +1,29 @@
-name: Sync email fragments from DA
+name: Sync email fragments from DA (DORMANT)
 
-# Document Authoring is where the email fragments are authored; the repo is the
-# only place they render unprocessed. This job carries each published fragment
-# across into email-templates/, which EDS serves byte-for-byte.
+# DORMANT ON PURPOSE. Do not add automatic triggers back without reading this.
 #
-# The repository_dispatch trigger is the one that matters — point a DA publish
-# webhook at it so a fragment renders as soon as an author publishes. The
-# schedule is a safety net for a missed webhook, not the primary path.
+# This job was built to carry fragments from Document Authoring into
+# email-templates/. It works — 13 of 14 fragments round-tripped byte-identical
+# when it was tested. It is switched off because its *source* is not reliable.
+#
+# DA stores content in its own model, and it rewrites an email left in it. A
+# fragment published at 8,998 bytes came back as 211 bytes: table shell gone,
+# `<main><div>` in its place, the wordmark reinterpreted as a block name. Three
+# of fourteen were destroyed within an hour, including one that had been
+# restored, and the count was climbing. Opening a fragment in the da.live
+# editor appears to be enough to trigger it.
+#
+# email-templates/ is therefore the source of truth, edited in git. If this job
+# ran on a schedule it would overwrite those hand edits with whatever DA holds
+# — which for an untouched fragment is the old copy, and for a touched one is
+# rubble. The shape check in tools/sync-da-fragments.mjs blocks the rubble; it
+# cannot tell a stale DA copy from an intentional git edit.
+#
+# Left runnable by hand so the machinery is one click away if DA ever holds
+# these properly, or if the emails move to an EDS block that DA *can* store.
 
 on:
   workflow_dispatch:
-  repository_dispatch:
-    types: [da-publish]
-  schedule:
-    # off the hour on purpose; every scheduled job in the world runs at :00
-    - cron: '23 */6 * * *'
 
 concurrency:
   group: sync-da-fragments
