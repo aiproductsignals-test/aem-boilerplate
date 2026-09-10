@@ -9,7 +9,10 @@
         edits write back as pull requests. Git remains the sole source
         of truth; DA hosts the chrome, never the content.
   runs: standalone, or registered as a DA.live plugin / served from
-        the EDS repo at /tools/library/
+        the EDS repo at /tools/library/index.html — note the full path.
+        Repo files come off the code bus and are served at their exact
+        path; EDS resolves directory-style URLs only for content pages,
+        so /tools/library/ is a 404.
 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
@@ -217,11 +220,11 @@ dialog .note.warn{color:var(--alert)}
   <div class="dbody">
     <div class="row">
       <div><label for="cfgOwner">Owner</label><input type="text" id="cfgOwner" placeholder="aiproductsignals-test" autocomplete="off"></div>
-      <div><label for="cfgRepo">Repository</label><input type="text" id="cfgRepo" placeholder="birch-creek" autocomplete="off"></div>
+      <div><label for="cfgRepo">Repository</label><input type="text" id="cfgRepo" placeholder="aem-boilerplate" autocomplete="off"></div>
     </div>
     <div class="row">
       <div><label for="cfgBranch">Base branch</label><input type="text" id="cfgBranch" placeholder="main" autocomplete="off"></div>
-      <div><label for="cfgPath">Patterns folder <span class="hint">in the repo</span></label><input type="text" id="cfgPath" placeholder="fragments/emails" autocomplete="off"></div>
+      <div><label for="cfgPath">Patterns folder <span class="hint">in the repo</span></label><input type="text" id="cfgPath" placeholder="email-templates" autocomplete="off"></div>
     </div>
     <label for="cfgToken">Fine-grained personal access token</label>
     <input type="password" id="cfgToken" placeholder="github_pat_…" autocomplete="off">
@@ -661,7 +664,7 @@ function saveConfig(withToken) {
     owner: $('cfgOwner').value.trim(),
     repo: $('cfgRepo').value.trim(),
     branch: $('cfgBranch').value.trim() || 'main',
-    path: $('cfgPath').value.trim().replace(/^\/+|\/+$/g, '') || 'fragments/emails',
+    path: $('cfgPath').value.trim().replace(/^\/+|\/+$/g, '') || 'email-templates',
     token: $('cfgToken').value.trim()
   };
   state.cfg = cfg;
@@ -781,7 +784,7 @@ function openSettings() {
   $('cfgOwner').value = c.owner || '';
   $('cfgRepo').value = c.repo || '';
   $('cfgBranch').value = c.branch || 'main';
-  $('cfgPath').value = c.path || 'fragments/emails';
+  $('cfgPath').value = c.path || 'email-templates';
   $('cfgToken').value = c.token || '';
   $('settingsDlg').showModal();
 }
