@@ -1,0 +1,198 @@
+<body>
+  <header></header>
+  <main>
+    <div>
+      <div class="metadata">
+        <div><div>Title</div><div>Straight answers — Birch Creek Health</div></div>
+        <div><div>Description</div><div>The questions members actually call about, written from real member service calls and updated monthly. Signed-in members see answers matched to their own plan and claims.</div></div>
+      </div>
+    </div>
+
+    <div>
+      <h1>Straight answers.</h1>
+      <p>The questions members actually call about — written from real member service calls, updated monthly, and specific enough that you don't have to phone us to confirm any of it. Signed in, you see answers matched to your own plan and claims. Sections run most-asked first.</p>
+      <div class="member-banner">
+        <div>
+          <div>Signed in as</div>
+          <div><strong>Dana K.</strong> · member since <span data-slot="{{member.member_since}}">2024</span></div>
+        </div>
+        <div>
+          <div>Banner</div>
+          <div>Answers below reflect your <span data-slot="{{member.plan_name}}">Chippewa</span> plan and claims as of today.</div>
+        </div>
+        <div>
+          <div>Deductible</div>
+          <div><span data-slot="{{member.deductible_status}}">$1,112</span> of $1,750</div>
+          <div>63.5</div>
+          <div>$638 remaining</div>
+        </div>
+        <div>
+          <div>Out of pocket</div>
+          <div><span data-slot="{{member.oop_status}}">$1,371</span> of $5,400</div>
+          <div>25.4</div>
+          <div>$4,029 remaining</div>
+        </div>
+        <div>
+          <div>Primary care</div>
+          <div><span data-slot="{{member.pcp_network_status}}">In network</span></div>
+          <div></div>
+          <div>Listing verified 2026-06-14</div>
+        </div>
+        <div>
+          <div>Prior authorizations</div>
+          <div><span data-slot="{{member.pending_prior_auths}}">None</span> pending</div>
+          <div></div>
+          <div>Standard requests decide in a 3.2-day median</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h2 id="network">Confirming a provider is in network</h2>
+      <div class="faq-accordion">
+        <div><div>#1 most asked</div></div>
+        <div>
+          <div><h3>How do I confirm a provider is actually in network before I book?</h3></div>
+          <div><p>Open the directory listing and read its <em>verified on</em> date. No listing in our directory is more than 90 days old — every one is re-verified within that window, and the last full audit was July 1, 2026. If you want something more durable than a date, ask us for a written network verification. It comes with a reference number, and it holds: if the directory was wrong at the time we verified, the reference number is what we process the claim against.</p><p>Your current PCP shows as <span data-slot="{{member.pcp_network_status}}">in network, verified 2026-06-14</span>.</p></div>
+          <div><p><a href="/provider-directory">Provider directory</a> → your provider's listing → the <em>verified on</em> date. Request written verification from the same screen.</p></div>
+        </div>
+        <div>
+          <div><h3>The directory showed in network, but my claim processed out of network. What happens now?</h3></div>
+          <div><p>Ask for documentation of that provider's network status <strong>on your date of service</strong> — not today's status, the status on the day you were seen. That's the document the dispute turns on. If our directory listed the provider as in network on that date, the written verification reference number is what we reconcile the claim against. Bring your Explanation of Benefits and the date you booked. We won't promise you an outcome before the review runs, but the network status on the date of service is a matter of record, and you're entitled to it in writing.</p></div>
+          <div><p><a href="/claims">Your claims</a> → the claim in question → request date-of-service network documentation.</p></div>
+        </div>
+        <div>
+          <div><h3>Do I have to check the facility separately from the doctor?</h3></div>
+          <div><p>Yes — and it's the most common source of a bill members don't expect. A surgeon, the hospital or ambulatory surgery center where they operate, and the lab or imaging group that reads your results are three separate contracts. Any one can be out of network while the others are in. Verify each entity by name rather than assuming the affiliation carries. Written verification is available for each, with its own reference number.</p></div>
+          <div><p><a href="/provider-directory">Provider directory</a> → search each entity by name → request written verification for each.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-metadata">
+        <div><div>style</div><div>rule-top</div></div>
+      </div>
+      <h2 id="cost">What a procedure costs, and why the number moves</h2>
+      <div class="faq-accordion">
+        <div><div>#2 most asked</div></div>
+        <div>
+          <div><h3>Why did the estimator give me a range instead of a price?</h3></div>
+          <div><p>Because you asked it a question with more than one answer. A range means the estimate covers multiple settings or multiple billing components that haven't been pinned down yet. Narrow it: give the estimator the specific facility and the procedure code, and it returns the contracted rate for that combination — the rate we actually pay, not a regional average — split into facility and professional fees. The wide end and the narrow end of your range are usually the same procedure in a hospital outpatient department versus an independent site.</p><p>Estimates reflect your <span data-slot="{{member.plan_name}}">Chippewa</span> plan and your position at <span data-slot="{{member.deductible_status}}">$1,112 of $1,750 met</span>.</p></div>
+          <div><p><a href="/cost-estimator">Cost estimator</a> → enter the procedure code and the specific facility.</p></div>
+        </div>
+        <div>
+          <div><h3>Why does the same procedure cost three different amounts?</h3></div>
+          <div><p>Facility fees. A hospital outpatient department, an ambulatory surgery center, and a physician's office bill the same procedure under different contracted rates, and the difference is not small. A knee MRI without contrast, CPT 73721, in the Eau Claire area on a Chippewa plan with the deductible met: $1,384 contracted at a hospital outpatient department, $486 at an independent imaging center. Your share moves from $277 to $97 — the same scan, $180 apart. The estimator separates facility from professional fees so you can see which half is moving.</p></div>
+          <div><p><a href="/cost-estimator">Cost estimator</a> → compare settings for the same procedure code. Our machine-readable price files publish monthly if you'd rather work from the raw file.</p></div>
+        </div>
+        <div>
+          <div><h3>How is out-of-network reimbursement calculated?</h3></div>
+          <div><p>We publish contracted rates for in-network care, and our machine-readable price files go out monthly. Out-of-network reimbursement is a different calculation, and the methodology — whether it benchmarks to a percentage of Medicare rates, a usual-and-customary database, or something else — is a plan document question, not a directory or estimator one. Ask member services for that methodology in writing before you commit to an out-of-network specialist.</p></div>
+          <div><p>Request the out-of-network reimbursement methodology in writing from member services, 1-800-555-0163, Mon–Fri 7am–7pm CT.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-metadata">
+        <div><div>style</div><div>rule-top</div></div>
+      </div>
+      <h2 id="quality">Our own performance numbers</h2>
+      <div class="faq-accordion">
+        <div><div>#3 most asked</div></div>
+        <div>
+          <div><h3>Where do I find your performance data, and what are you measured against?</h3></div>
+          <div><p>Two figures are published and audited. 96.4% of claims processed within 14 days, measured across 2025 and audited. Prior authorization decisions on standard requests run a 3.2-day median. Both are measured numbers with a stated window, not service targets, and they are the two benchmarks to hold us to. If you need a figure we don't currently publish, ask for it — what we publish is a decision we make, and we'd rather hear which number you need.</p></div>
+          <div><p>The published figures appear in our <a href="/annual-report">annual report to members</a>.</p></div>
+        </div>
+        <div>
+          <div><h3>Do you publish provider-level quality data — complication rates, outcomes by physician?</h3></div>
+          <div><p>Not currently. We publish our own performance figures and the clinical rationale behind formulary decisions, but not physician-level outcome or complication data — and we'd rather say so plainly than point you at a star icon with no methodology behind it. What we can give you is the verifiable layer underneath a provider choice: current network status with a written reference number, hospital affiliation, and contracted rates by setting. If outcome data is what would change your decision, tell member services.</p></div>
+          <div><p><a href="/provider-directory">Provider directory</a> for affiliation and verification; <a href="/cost-estimator">cost estimator</a> for rates by setting.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-metadata">
+        <div><div>style</div><div>rule-top</div></div>
+      </div>
+      <h2 id="accumulators">Deductible and out-of-pocket reconciliation</h2>
+      <div class="faq-accordion">
+        <div><div>#4 most asked</div></div>
+        <div>
+          <div><h3>My math and your accumulator disagree. How do we settle it?</h3></div>
+          <div><p>Line by line. Export your accumulator — it breaks down claim by claim, not as a running total — and compare it against your Explanation of Benefits. Most discrepancies resolve to a claim that finalized after you did your arithmetic, or one that processed under a different benefit than expected. If the export and your spreadsheet still disagree, ask for a line-by-line reconciliation. We'll walk the claims with you rather than restate the total.</p><p>You're at <span data-slot="{{member.deductible_status}}">$1,112 of $1,750</span> on your deductible and <span data-slot="{{member.oop_status}}">$1,371 of $5,400</span> against your out-of-pocket maximum.</p></div>
+          <div><p><a href="/accumulators">Your accumulators</a> → export the claim-by-claim breakdown.</p></div>
+        </div>
+        <div>
+          <div><h3>Which claims apply to my deductible versus my out-of-pocket maximum?</h3></div>
+          <div><p>Your accumulator export shows this per claim rather than in aggregate, which is the level you need if you're reconciling. Preventive care is the clean case: it's covered at no cost share on every Birch Creek plan, so it doesn't move either number. Beyond that, how a given claim applies depends on your plan's structure — on <span data-slot="{{member.plan_name}}">Chippewa</span>, that's a <span data-slot="{{member.deductible_status}}">$1,112 of $1,750</span> deductible position governing what you've reached. The export column tells you which accumulator each claim touched. If a claim landed in a column you didn't expect, that's a reconciliation request, and it's a reasonable one.</p></div>
+          <div><p><a href="/accumulators">Your accumulators</a> → export → the per-claim accumulator column.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-metadata">
+        <div><div>style</div><div>rule-top</div></div>
+      </div>
+      <h2 id="prior-authorization">Prior authorization criteria and turnaround</h2>
+      <div class="faq-accordion">
+        <div><div>#5 most asked</div></div>
+        <div>
+          <div><h3>Can I read the actual criteria before my doctor submits?</h3></div>
+          <div><p>Yes, and you should. All 412 of our active medical policies are public with no login, including the prior authorization criteria — the same documents our reviewers work from. Each carries a policy number, an effective date, and its revision history, so you can see what changed and when. Find the policy for the service in question, note the policy number, and give it to your physician's office to cite in the submission. A request that addresses the published criteria directly is a request that doesn't come back for clarification.</p><p>You currently have <span data-slot="{{member.pending_prior_auths}}">no prior authorizations pending</span>.</p></div>
+          <div><p><a href="/policy-library">Policy library</a> → search by service → policy number, effective date, and revision history.</p></div>
+        </div>
+        <div>
+          <div><h3>How long does a prior authorization take?</h3></div>
+          <div><p>The median decision on a standard request is 3.2 days. That's a measured median, not a target, and it means half of standard requests decide faster and half slower — it is not a guarantee for your specific request. Requests pended for additional clinical records from your provider sit outside that clock until the records arrive, which is the most common reason a decision runs long. We don't publish a separate turnaround figure by service category. If yours is pending, the useful question is whether it's pended for records, and that's answerable by phone.</p></div>
+          <div><p><a href="/prior-authorizations">Your prior authorizations</a> → status. Member services, 1-800-555-0163, Mon–Fri 7am–7pm CT, for pended-for-records detail.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-metadata">
+        <div><div>style</div><div>rule-top</div></div>
+      </div>
+      <h2 id="formulary">Formulary tiers and alternatives</h2>
+      <div class="faq-accordion">
+        <div><div>#6 most asked</div></div>
+        <div>
+          <div><h3>Why is my drug on Tier 3 when another plan lists it lower?</h3></div>
+          <div><p>Because tier placement is our clinical decision, and we publish the reasoning behind it rather than asking you to accept the tier. Every drug on our formulary carries its published clinical rationale — that's the document that answers "why this tier." Another plan reaching a different placement isn't evidence of an error in either direction; it's two formulary committees weighing the same evidence. Read our rationale and see whether it holds up. Tiers are reviewed annually, and any change comes with 60 days' notice.</p></div>
+          <div><p><a href="/formulary">Formulary A–Z</a> → your drug → the published clinical rationale.</p></div>
+        </div>
+        <div>
+          <div><h3>What are my alternatives, and can I get an exception?</h3></div>
+          <div><p>Every drug on the formulary lists its therapeutic alternatives, including which of them sit on lower tiers. That list is designed to be taken to your physician — it's the document that makes the conversation about clinical fit rather than about cost alone. On exceptions: the criteria for a formulary exception are a plan document, and if you want them before you file, ask member services for the exception criteria in writing. We won't tell you in advance how an exception will decide.</p></div>
+          <div><p><a href="/formulary">Formulary A–Z</a> → your drug → therapeutic alternatives and tier placement for each.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-metadata">
+        <div><div>style</div><div>rule-top</div></div>
+      </div>
+      <h2 id="documents">Benefit documents and preventive coverage</h2>
+      <div class="faq-accordion">
+        <div><div>#7 most asked</div></div>
+        <div>
+          <div><h3>I'm comparing plans. Which documents should I be working from?</h3></div>
+          <div><p>Start with the three that are public and current: the full formulary with tier placements and clinical rationale, the policy library's 412 active medical policies, and the monthly machine-readable price files. Those let you compare what's actually covered, on what criteria, at what contracted rate — rather than comparing benefit summaries against each other. For plan-level documents specific to <span data-slot="{{member.plan_name}}">Chippewa</span>, ask member services and get them by email so you're working from a fixed version.</p></div>
+          <div><p><a href="/formulary">Formulary A–Z</a>, <a href="/policy-library">policy library</a>, and the monthly machine-readable price files — all public, no login.</p></div>
+        </div>
+        <div>
+          <div><h3>How do I confirm a specific preventive service is covered at no cost?</h3></div>
+          <div><p>Preventive care is covered at no cost share on all three Birch Creek plans — Driftless, Chippewa, and Superior. The place that gets expensive is the line between preventive and diagnostic: the same procedure can bill either way depending on the diagnosis code submitted with it, and a screening that finds something can be recoded. Before you schedule, ask which code combination your provider intends to submit, and ask us to confirm the cost-sharing scenario for that combination in writing. Get the confirmation by email and keep it.</p></div>
+          <div><p>Request written confirmation of the coding scenario from member services, 1-800-555-0163, Mon–Fri 7am–7pm CT.</p></div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer></footer>
+</body>

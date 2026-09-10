@@ -1,0 +1,171 @@
+/*
+ * member-banner — the signed-in strip and the member's current position.
+ * Every colour, face and step below is a styles.css custom property; the block
+ * adds no new tokens. The card takes a 1px line on light grounds and the one
+ * shadow, per the captured elevation rule.
+ */
+
+.member-banner .member-banner-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  flex-wrap: wrap;
+  padding: 12px 18px;
+  background: var(--birch);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+}
+
+.member-banner .member-banner-identity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--t-figure);
+  color: var(--ink);
+}
+
+.member-banner .member-banner-avatar {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--pine);
+  color: var(--ink-on-dark);
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.member-banner .member-banner-who strong {
+  font-weight: 600;
+}
+
+.member-banner .member-banner-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin: 0;
+  max-width: 64ch;
+  font-size: var(--t-figure);
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.member-banner .member-banner-tick {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  margin-top: 3px;
+  color: var(--pine);
+}
+
+/* --- the position cells --- */
+
+.member-banner .member-banner-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 20px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.member-banner .member-banner-cell {
+  padding: 18px 20px 20px;
+  border-right: 1px solid var(--line);
+}
+
+.member-banner .member-banner-cell:last-child {
+  border-right: 0;
+}
+
+.member-banner .member-banner-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--t-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.member-banner .member-banner-value {
+  display: block;
+  margin-top: 8px;
+  font-size: var(--t-stat);
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.member-banner .member-banner-note-small {
+  display: block;
+  margin-top: 7px;
+  font-size: var(--t-figure);
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.member-banner .member-banner-meter {
+  height: 5px;
+  margin-top: 12px;
+  border-radius: 3px;
+  background: var(--birch);
+  overflow: hidden;
+}
+
+.member-banner .member-banner-meter i {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: var(--pine);
+}
+
+/* --- the ledger face: every checkable figure, and every slot value --- */
+
+.member-banner .fig,
+.member-banner [data-slot] {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Boilerplate default-content rules give <p> a measure and a top margin; the
+   banner sets its own, so neither leaks in. */
+.member-banner p {
+  max-width: none;
+}
+
+@media (width <= 900px) {
+  .member-banner .member-banner-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .member-banner .member-banner-cell:nth-child(2) {
+    border-right: 0;
+  }
+
+  .member-banner .member-banner-cell:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+@media (width <= 600px) {
+  .member-banner .member-banner-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .member-banner .member-banner-cell {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .member-banner .member-banner-cell:last-child {
+    border-bottom: 0;
+  }
+}

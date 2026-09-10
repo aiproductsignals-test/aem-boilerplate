@@ -1,0 +1,160 @@
+/*
+ * faq-accordion — hairline-ruled collapsible rows, display-face questions,
+ * body-face answers, and the *Check it yourself* pathway ruled off with the
+ * lenticel mark. Every value resolves to a styles.css custom property.
+ */
+
+.faq-accordion .faq-accordion-meta {
+  margin: 0 0 4px;
+  max-width: none;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--t-figure);
+  letter-spacing: -0.01em;
+  color: var(--ink-soft);
+}
+
+.faq-accordion .faq-accordion-item {
+  border-top: 1px solid var(--line);
+}
+
+.faq-accordion .faq-accordion-item:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+/* --- the control --- */
+
+.faq-accordion .faq-accordion-question {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px 2px;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-display);
+  font-size: var(--t-display-3);
+  font-weight: 600;
+  font-variation-settings: 'opsz' 30;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  transition: color 160ms cubic-bezier(0.42, 0, 0, 1);
+}
+
+.faq-accordion .faq-accordion-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-accordion .faq-accordion-question:hover {
+  color: var(--pine);
+}
+
+.faq-accordion .faq-accordion-chev {
+  width: 19px;
+  height: 19px;
+  flex: none;
+  margin-top: 6px;
+  color: var(--gold-deep);
+  transition: transform 220ms cubic-bezier(0.42, 0, 0, 1);
+}
+
+.faq-accordion .faq-accordion-item[open] .faq-accordion-chev {
+  transform: rotate(90deg);
+}
+
+/* --- the answer --- */
+
+.faq-accordion .faq-accordion-check-path,
+.faq-accordion .faq-accordion-check-path p {
+  margin: 0;
+  max-width: none;
+  font-size: var(--t-figure);
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.faq-accordion .faq-accordion-body {
+  padding: 0 2px 24px 37px;
+  max-width: 74ch;
+}
+
+.faq-accordion .faq-accordion-body p {
+  margin: 0;
+  max-width: none;
+  font-size: var(--t-body);
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.faq-accordion .faq-accordion-body p + p {
+  margin-top: 14px;
+}
+
+/* --- the verification pathway, ruled off with the brand's lenticel --- */
+
+.faq-accordion .faq-accordion-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  margin-top: 20px;
+  padding-top: 15px;
+  background-image: var(--lenticel-rule);
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  background-position: 0 0;
+  font-size: var(--t-figure);
+  line-height: 1.5;
+}
+
+.faq-accordion .faq-accordion-check-key {
+  flex: none;
+  padding-top: 2px;
+  font-family: var(--font-body);
+  font-size: var(--t-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+
+.faq-accordion .faq-accordion-check-path a {
+  font-weight: 500;
+  color: var(--pine);
+}
+
+/* --- the ledger face --- */
+
+.faq-accordion .fig,
+.faq-accordion [data-slot] {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* The summary is the focusable control; the boilerplate focus ring already
+   themes it, but the flex row needs the outline to hug the whole row. */
+.faq-accordion .faq-accordion-question:focus-visible {
+  outline: 3px solid var(--gold-deep);
+  outline-offset: -1px;
+  border-radius: 2px;
+}
+
+@media (width <= 600px) {
+  .faq-accordion .faq-accordion-question {
+    gap: 12px;
+    padding-block: 16px;
+    font-size: 20px;
+  }
+
+  .faq-accordion .faq-accordion-body {
+    padding-left: 31px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-accordion .faq-accordion-chev,
+  .faq-accordion .faq-accordion-question {
+    transition: none;
+  }
+}
