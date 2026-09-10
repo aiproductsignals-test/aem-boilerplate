@@ -9,82 +9,21 @@
  * closed wall.
  *
  * Authoring rows:
- *   optional first row, ONE cell   | #1 most asked |          → block meta line
+ *   optional first row, ONE cell   | #1 most asked |   → block meta line
  *   every other row, two or three  | <h3>Question</h3> | <p>Answer</p> |
  *                                  | <p>Check it yourself: …</p> |
  *
  * The third cell is the *Check it yourself* pathway — the brand's verification
  * promise, ruled off with the lenticel mark. Omit it and no rule renders.
  *
- * Numerals: the brand sets every checkable figure in the ledger face. Authored
- * prose cannot carry a wrapper (inline spans do not survive the editor
- * round-trip), so figures are wrapped here — see wrapFigures.
+ * Slots and numerals — see /scripts/personalization.js.
  */
 
-// $1,384 · 96.4% · 3.2-day · 2026-06-14 · 1-800-555-0163 · 412 · 73721
-const FIGURE = /(\$\d[\d,.]*|\d[\d,.]*%|\d[\d,.]*(?:-\d[\d,.]*)*(?:-[a-z]+)?)/gi;
-
-const SLOT = /\{\{\s*([a-z0-9_.]+)\s*\}\}/gi;
+import { restoreSlots, wrapFigures } from '../../scripts/personalization.js';
 
 const isFilled = (el) => !!el && !!el.textContent.trim();
-const hasHeading = (el) => !!el && (el.matches('h1,h2,h3,h4,h5,h6') || !!el.querySelector('h1,h2,h3,h4,h5,h6'));
-
-function wrapFigures(root) {
-  if (!root) return;
-  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
-  const targets = [];
-  while (walker.nextNode()) {
-    const node = walker.currentNode;
-    if (!node.parentElement.closest('.fig') && FIGURE.test(node.nodeValue)) targets.push(node);
-    FIGURE.lastIndex = 0;
-  }
-  targets.forEach((node) => {
-    const frag = document.createDocumentFragment();
-    let last = 0;
-    node.nodeValue.replace(FIGURE, (match, _g, offset) => {
-      if (offset > last) frag.append(node.nodeValue.slice(last, offset));
-      const span = document.createElement('span');
-      span.className = 'fig';
-      span.textContent = match;
-      frag.append(span);
-      last = offset + match.length;
-      return match;
-    });
-    if (last < node.nodeValue.length) frag.append(node.nodeValue.slice(last));
-    node.parentNode.replaceChild(frag, node);
-  });
-}
-
-/** See member-banner.js — an authored `{{slot}}` marker and a literal
- *  `data-slot` span are two spellings of the same contract. */
-function restoreSlots(root) {
-  if (!root || !SLOT.test(root.innerHTML)) return;
-  SLOT.lastIndex = 0;
-  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
-  const targets = [];
-  while (walker.nextNode()) {
-    if (SLOT.test(walker.currentNode.nodeValue)) targets.push(walker.currentNode);
-    SLOT.lastIndex = 0;
-  }
-  targets.forEach((node) => {
-    const frag = document.createDocumentFragment();
-    let last = 0;
-    node.nodeValue.replace(SLOT, (match, name, offset) => {
-      if (offset > last) frag.append(node.nodeValue.slice(last, offset));
-      const span = document.createElement('span');
-      span.dataset.slot = `{{${name}}}`;
-      const rest = node.nodeValue.slice(offset + match.length);
-      const stop = rest.search(SLOT);
-      SLOT.lastIndex = 0;
-      span.textContent = (stop === -1 ? rest : rest.slice(0, stop)).trim();
-      frag.append(span);
-      last = offset + match.length + (stop === -1 ? rest.length : stop);
-      return match;
-    });
-    if (last < node.nodeValue.length) frag.append(node.nodeValue.slice(last));
-    node.parentNode.replaceChild(frag, node);
-  });
-}
+const hasHeading = (el) => !!el
+  && (el.matches('h1,h2,h3,h4,h5,h6') || !!el.querySelector('h1,h2,h3,h4,h5,h6'));
 
 function chevron() {
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');

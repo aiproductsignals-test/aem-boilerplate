@@ -14,33 +14,33 @@
       <div class="member-banner">
         <div>
           <div>Signed in as</div>
-          <div><strong>Dana K.</strong> · member since <span data-slot="{{member.member_since}}">2024</span></div>
+          <div><strong>Dana K.</strong> · member since {{member.member_since|2024}}</div>
         </div>
         <div>
           <div>Banner</div>
-          <div>Answers below reflect your <span data-slot="{{member.plan_name}}">Chippewa</span> plan and claims as of today.</div>
+          <div>Answers below reflect your {{member.plan_name|Chippewa}} plan and claims as of today.</div>
         </div>
         <div>
           <div>Deductible</div>
-          <div><span data-slot="{{member.deductible_status}}">$1,112</span> of $1,750</div>
+          <div>{{member.deductible_status|$1,112}} of $1,750</div>
           <div>63.5</div>
           <div>$638 remaining</div>
         </div>
         <div>
           <div>Out of pocket</div>
-          <div><span data-slot="{{member.oop_status}}">$1,371</span> of $5,400</div>
+          <div>{{member.oop_status|$1,371}} of $5,400</div>
           <div>25.4</div>
           <div>$4,029 remaining</div>
         </div>
         <div>
           <div>Primary care</div>
-          <div><span data-slot="{{member.pcp_network_status}}">In network</span></div>
+          <div>{{member.pcp_network_status|In network}}</div>
           <div></div>
           <div>Listing verified 2026-06-14</div>
         </div>
         <div>
           <div>Prior authorizations</div>
-          <div><span data-slot="{{member.pending_prior_auths}}">None</span> pending</div>
+          <div>{{member.pending_prior_auths|None}} pending</div>
           <div></div>
           <div>Standard requests decide in a 3.2-day median</div>
         </div>
@@ -53,7 +53,7 @@
         <div><div>#1 most asked</div></div>
         <div>
           <div><h3>How do I confirm a provider is actually in network before I book?</h3></div>
-          <div><p>Open the directory listing and read its <em>verified on</em> date. No listing in our directory is more than 90 days old — every one is re-verified within that window, and the last full audit was July 1, 2026. If you want something more durable than a date, ask us for a written network verification. It comes with a reference number, and it holds: if the directory was wrong at the time we verified, the reference number is what we process the claim against.</p><p>Your current PCP shows as <span data-slot="{{member.pcp_network_status}}">in network, verified 2026-06-14</span>.</p></div>
+          <div><p>Open the directory listing and read its <em>verified on</em> date. No listing in our directory is more than 90 days old — every one is re-verified within that window, and the last full audit was July 1, 2026. If you want something more durable than a date, ask us for a written network verification. It comes with a reference number, and it holds: if the directory was wrong at the time we verified, the reference number is what we process the claim against.</p><p>Your current PCP shows as {{member.pcp_network_status|in network, verified 2026-06-14}}.</p></div>
           <div><p><a href="/provider-directory">Provider directory</a> → your provider's listing → the <em>verified on</em> date. Request written verification from the same screen.</p></div>
         </div>
         <div>
@@ -78,7 +78,7 @@
         <div><div>#2 most asked</div></div>
         <div>
           <div><h3>Why did the estimator give me a range instead of a price?</h3></div>
-          <div><p>Because you asked it a question with more than one answer. A range means the estimate covers multiple settings or multiple billing components that haven't been pinned down yet. Narrow it: give the estimator the specific facility and the procedure code, and it returns the contracted rate for that combination — the rate we actually pay, not a regional average — split into facility and professional fees. The wide end and the narrow end of your range are usually the same procedure in a hospital outpatient department versus an independent site.</p><p>Estimates reflect your <span data-slot="{{member.plan_name}}">Chippewa</span> plan and your position at <span data-slot="{{member.deductible_status}}">$1,112 of $1,750 met</span>.</p></div>
+          <div><p>Because you asked it a question with more than one answer. A range means the estimate covers multiple settings or multiple billing components that haven't been pinned down yet. Narrow it: give the estimator the specific facility and the procedure code, and it returns the contracted rate for that combination — the rate we actually pay, not a regional average — split into facility and professional fees. The wide end and the narrow end of your range are usually the same procedure in a hospital outpatient department versus an independent site.</p><p>Estimates reflect your {{member.plan_name|Chippewa}} plan and your position at {{member.deductible_status|$1,112 of $1,750 met}}.</p></div>
           <div><p><a href="/cost-estimator">Cost estimator</a> → enter the procedure code and the specific facility.</p></div>
         </div>
         <div>
@@ -123,12 +123,12 @@
         <div><div>#4 most asked</div></div>
         <div>
           <div><h3>My math and your accumulator disagree. How do we settle it?</h3></div>
-          <div><p>Line by line. Export your accumulator — it breaks down claim by claim, not as a running total — and compare it against your Explanation of Benefits. Most discrepancies resolve to a claim that finalized after you did your arithmetic, or one that processed under a different benefit than expected. If the export and your spreadsheet still disagree, ask for a line-by-line reconciliation. We'll walk the claims with you rather than restate the total.</p><p>You're at <span data-slot="{{member.deductible_status}}">$1,112 of $1,750</span> on your deductible and <span data-slot="{{member.oop_status}}">$1,371 of $5,400</span> against your out-of-pocket maximum.</p></div>
+          <div><p>Line by line. Export your accumulator — it breaks down claim by claim, not as a running total — and compare it against your Explanation of Benefits. Most discrepancies resolve to a claim that finalized after you did your arithmetic, or one that processed under a different benefit than expected. If the export and your spreadsheet still disagree, ask for a line-by-line reconciliation. We'll walk the claims with you rather than restate the total.</p><p>You're at {{member.deductible_status|$1,112 of $1,750}} on your deductible and {{member.oop_status|$1,371 of $5,400}} against your out-of-pocket maximum.</p></div>
           <div><p><a href="/accumulators">Your accumulators</a> → export the claim-by-claim breakdown.</p></div>
         </div>
         <div>
           <div><h3>Which claims apply to my deductible versus my out-of-pocket maximum?</h3></div>
-          <div><p>Your accumulator export shows this per claim rather than in aggregate, which is the level you need if you're reconciling. Preventive care is the clean case: it's covered at no cost share on every Birch Creek plan, so it doesn't move either number. Beyond that, how a given claim applies depends on your plan's structure — on <span data-slot="{{member.plan_name}}">Chippewa</span>, that's a <span data-slot="{{member.deductible_status}}">$1,112 of $1,750</span> deductible position governing what you've reached. The export column tells you which accumulator each claim touched. If a claim landed in a column you didn't expect, that's a reconciliation request, and it's a reasonable one.</p></div>
+          <div><p>Your accumulator export shows this per claim rather than in aggregate, which is the level you need if you're reconciling. Preventive care is the clean case: it's covered at no cost share on every Birch Creek plan, so it doesn't move either number. Beyond that, how a given claim applies depends on your plan's structure — on {{member.plan_name|Chippewa}}, that's a {{member.deductible_status|$1,112 of $1,750}} deductible position governing what you've reached. The export column tells you which accumulator each claim touched. If a claim landed in a column you didn't expect, that's a reconciliation request, and it's a reasonable one.</p></div>
           <div><p><a href="/accumulators">Your accumulators</a> → export → the per-claim accumulator column.</p></div>
         </div>
       </div>
@@ -143,7 +143,7 @@
         <div><div>#5 most asked</div></div>
         <div>
           <div><h3>Can I read the actual criteria before my doctor submits?</h3></div>
-          <div><p>Yes, and you should. All 412 of our active medical policies are public with no login, including the prior authorization criteria — the same documents our reviewers work from. Each carries a policy number, an effective date, and its revision history, so you can see what changed and when. Find the policy for the service in question, note the policy number, and give it to your physician's office to cite in the submission. A request that addresses the published criteria directly is a request that doesn't come back for clarification.</p><p>You currently have <span data-slot="{{member.pending_prior_auths}}">no prior authorizations pending</span>.</p></div>
+          <div><p>Yes, and you should. All 412 of our active medical policies are public with no login, including the prior authorization criteria — the same documents our reviewers work from. Each carries a policy number, an effective date, and its revision history, so you can see what changed and when. Find the policy for the service in question, note the policy number, and give it to your physician's office to cite in the submission. A request that addresses the published criteria directly is a request that doesn't come back for clarification.</p><p>You currently have {{member.pending_prior_auths|no prior authorizations pending}}.</p></div>
           <div><p><a href="/policy-library">Policy library</a> → search by service → policy number, effective date, and revision history.</p></div>
         </div>
         <div>
@@ -183,7 +183,7 @@
         <div><div>#7 most asked</div></div>
         <div>
           <div><h3>I'm comparing plans. Which documents should I be working from?</h3></div>
-          <div><p>Start with the three that are public and current: the full formulary with tier placements and clinical rationale, the policy library's 412 active medical policies, and the monthly machine-readable price files. Those let you compare what's actually covered, on what criteria, at what contracted rate — rather than comparing benefit summaries against each other. For plan-level documents specific to <span data-slot="{{member.plan_name}}">Chippewa</span>, ask member services and get them by email so you're working from a fixed version.</p></div>
+          <div><p>Start with the three that are public and current: the full formulary with tier placements and clinical rationale, the policy library's 412 active medical policies, and the monthly machine-readable price files. Those let you compare what's actually covered, on what criteria, at what contracted rate — rather than comparing benefit summaries against each other. For plan-level documents specific to {{member.plan_name|Chippewa}}, ask member services and get them by email so you're working from a fixed version.</p></div>
           <div><p><a href="/formulary">Formulary A–Z</a>, <a href="/policy-library">policy library</a>, and the monthly machine-readable price files — all public, no login.</p></div>
         </div>
         <div>
