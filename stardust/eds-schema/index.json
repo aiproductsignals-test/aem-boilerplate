@@ -1,0 +1,806 @@
+{
+ "source": "http://localhost:8791/birch-creek-homepage-html-B-proposed.html",
+ "width": 1280,
+ "profile": "eds",
+ "sections": [
+  {
+   "section": "hero",
+   "items": [
+    {
+     "role": "eyebrow",
+     "order": 0,
+     "text": "Member-governed since 1963"
+    },
+    {
+     "role": "heading",
+     "order": 1,
+     "text": "Health coverage that shows its work."
+    },
+    {
+     "role": "body",
+     "order": 2,
+     "text": "We publish our contracted rates, our prior authorization criteria, and our turnaround times — because you shouldn't have to take an insurance company's word for anything."
+    },
+    {
+     "role": "cta",
+     "order": 3,
+     "text": "See what care costs",
+     "href": "#tools"
+    },
+    {
+     "role": "cta",
+     "order": 4,
+     "text": "Compare plans",
+     "href": "#plans"
+    },
+    {
+     "role": "heading",
+     "order": 5,
+     "text": "What an MRI actually costs"
+    },
+    {
+     "role": "body",
+     "order": 6,
+     "text": "Knee MRI without contrast (CPT 73721) · Chippewa plan, deductible met · Eau Claire area"
+    },
+    {
+     "role": "eyebrow",
+     "order": 7,
+     "text": "Setting"
+    },
+    {
+     "role": "eyebrow",
+     "order": 8,
+     "text": "Contracted rate"
+    },
+    {
+     "role": "eyebrow",
+     "order": 9,
+     "text": "You pay"
+    },
+    {
+     "role": "body",
+     "order": 10,
+     "text": "Hospital outpatient dept."
+    },
+    {
+     "role": "body",
+     "order": 11,
+     "text": "$1,384"
+    },
+    {
+     "role": "body",
+     "order": 12,
+     "text": "$277"
+    },
+    {
+     "role": "body",
+     "order": 13,
+     "text": "Independent imaging center"
+    },
+    {
+     "role": "body",
+     "order": 14,
+     "text": "$486"
+    },
+    {
+     "role": "body",
+     "order": 15,
+     "text": "$97"
+    },
+    {
+     "role": "body",
+     "order": 16,
+     "text": "Same scan. Your choice saves"
+    },
+    {
+     "role": "body",
+     "order": 17,
+     "text": "$180"
+    },
+    {
+     "role": "body",
+     "order": 18,
+     "text": "Estimates use our real contracted rates, not regional averages."
+    },
+    {
+     "role": "cta",
+     "order": 19,
+     "text": "Run your own estimate →",
+     "href": "#"
+    }
+   ],
+   "imgCount": 0,
+   "editableTexts": 5,
+   "repeats": [
+    {
+     "unitSelector": "TR.",
+     "count": 2,
+     "unit": {
+      "headings": 0,
+      "ctas": 0,
+      "imgs": 0,
+      "textRuns": 3
+     },
+     "uniform": true
+    }
+   ]
+  },
+  {
+   "section": "measures-band",
+   "items": [
+    {
+     "role": "body",
+     "order": 0,
+     "text": "96.4%"
+    },
+    {
+     "role": "body",
+     "order": 1,
+     "text": "of claims processed within 14 days (2025 audited)"
+    },
+    {
+     "role": "body",
+     "order": 2,
+     "text": "3.2 days"
+    },
+    {
+     "role": "body",
+     "order": 3,
+     "text": "median prior authorization decision, standard requests"
+    },
+    {
+     "role": "body",
+     "order": 4,
+     "text": "90 days"
+    },
+    {
+     "role": "body",
+     "order": 5,
+     "text": "maximum age of any provider directory listing before re-verification"
+    },
+    {
+     "role": "body",
+     "order": 6,
+     "text": "21"
+    },
+    {
+     "role": "body",
+     "order": 7,
+     "text": "western Wisconsin counties served, from one Eau Claire headquarters"
+    }
+   ],
+   "imgCount": 0,
+   "editableTexts": 0,
+   "repeats": [
+    {
+     "unitSelector": "DIV.stat",
+     "count": 4,
+     "unit": {
+      "headings": 0,
+      "ctas": 0,
+      "imgs": 0,
+      "textRuns": 2
+     },
+     "uniform": true
+    }
+   ]
+  },
+  {
+   "section": "tools-index",
+   "items": [
+    {
+     "role": "eyebrow",
+     "order": 0,
+     "text": "Find care & costs"
+    },
+    {
+     "role": "heading",
+     "order": 1,
+     "text": "Check for yourself. We built the tools that way on purpose."
+    },
+    {
+     "role": "body",
+     "order": 2,
+     "text": "Every tool below draws from the same source data our claims system uses — so what you look up is what gets paid."
+    },
+    {
+     "role": "heading",
+     "order": 3,
+     "text": "Provider directory"
+    },
+    {
+     "role": "body",
+     "order": 4,
+     "text": "Search by specialty, hospital affiliation, and whether a clinician is accepting new patients."
+    },
+    {
+     "role": "cta",
+     "order": 5,
+     "text": "Find a provider →",
+     "href": "#"
+    },
+    {
+     "role": "body",
+     "order": 6,
+     "text": "Every listing re-verified within · last full audit July 1, 2026"
+    },
+    {
+     "role": "body",
+     "order": 7,
+     "text": "90 days"
+    },
+    {
+     "role": "heading",
+     "order": 8,
+     "text": "Cost estimator"
+    },
+    {
+     "role": "body",
+     "order": 9,
+     "text": "Procedure-level estimates from contracted rates, separated into facility and professional fees."
+    },
+    {
+     "role": "cta",
+     "order": 10,
+     "text": "Estimate a cost →",
+     "href": "#"
+    },
+    {
+     "role": "body",
+     "order": 11,
+     "text": "Machine-readable price files published"
+    },
+    {
+     "role": "body",
+     "order": 12,
+     "text": "monthly"
+    },
+    {
+     "role": "heading",
+     "order": 13,
+     "text": "Formulary A–Z"
+    },
+    {
+     "role": "body",
+     "order": 14,
+     "text": "Every covered drug, its tier, its alternatives — and the clinical rationale behind each placement."
+    },
+    {
+     "role": "cta",
+     "order": 15,
+     "text": "Look up a drug →",
+     "href": "#"
+    },
+    {
+     "role": "body",
+     "order": 16,
+     "text": "Tier review published , changes with 60-day notice"
+    },
+    {
+     "role": "body",
+     "order": 17,
+     "text": "annually"
+    },
+    {
+     "role": "heading",
+     "order": 18,
+     "text": "Policy library"
+    },
+    {
+     "role": "body",
+     "order": 19,
+     "text": "Our medical policies and prior authorization criteria, in full — the same documents our reviewers use."
+    },
+    {
+     "role": "cta",
+     "order": 20,
+     "text": "Read the policies →",
+     "href": "#"
+    },
+    {
+     "role": "body",
+     "order": 21,
+     "text": "All active policies public, no login required"
+    },
+    {
+     "role": "body",
+     "order": 22,
+     "text": "412"
+    }
+   ],
+   "imgCount": 0,
+   "editableTexts": 10,
+   "repeats": [
+    {
+     "unitSelector": "DIV.tool-row",
+     "count": 4,
+     "unit": {
+      "headings": 1,
+      "ctas": 1,
+      "imgs": 0,
+      "textRuns": 5
+     },
+     "uniform": true
+    }
+   ]
+  },
+  {
+   "section": "plans",
+   "items": [
+    {
+     "role": "eyebrow",
+     "order": 0,
+     "text": "Plans for 2026"
+    },
+    {
+     "role": "heading",
+     "order": 1,
+     "text": "Three plans. Same network. No fine-print surprises."
+    },
+    {
+     "role": "body",
+     "order": 2,
+     "text": "Every Birch Creek plan uses our full western Wisconsin network and covers preventive care at no cost share. The difference is how you'd rather pay: as you go, or up front."
+    },
+    {
+     "role": "eyebrow",
+     "order": 3,
+     "text": "HSA-qualified"
+    },
+    {
+     "role": "heading",
+     "order": 4,
+     "text": "Driftless"
+    },
+    {
+     "role": "body",
+     "order": 5,
+     "text": "For people who want the lowest premium and a tax-advantaged way to save for care."
+    },
+    {
+     "role": "body",
+     "order": 6,
+     "text": "Deductible (ind.)"
+    },
+    {
+     "role": "body",
+     "order": 7,
+     "text": "$3,300"
+    },
+    {
+     "role": "body",
+     "order": 8,
+     "text": "Out-of-pocket max"
+    },
+    {
+     "role": "body",
+     "order": 9,
+     "text": "$6,900"
+    },
+    {
+     "role": "body",
+     "order": 10,
+     "text": "Primary care visit"
+    },
+    {
+     "role": "body",
+     "order": 11,
+     "text": "Ded., then 20%"
+    },
+    {
+     "role": "body",
+     "order": 12,
+     "text": "Generic drugs"
+    },
+    {
+     "role": "body",
+     "order": 13,
+     "text": "Ded., then 20%"
+    },
+    {
+     "role": "cta",
+     "order": 14,
+     "text": "See full Driftless details",
+     "href": "#"
+    },
+    {
+     "role": "eyebrow",
+     "order": 15,
+     "text": "Most members choose this"
+    },
+    {
+     "role": "heading",
+     "order": 16,
+     "text": "Chippewa"
+    },
+    {
+     "role": "body",
+     "order": 17,
+     "text": "Balanced premiums and predictable copays for regular care."
+    },
+    {
+     "role": "body",
+     "order": 18,
+     "text": "Deductible (ind.)"
+    },
+    {
+     "role": "body",
+     "order": 19,
+     "text": "$1,750"
+    },
+    {
+     "role": "body",
+     "order": 20,
+     "text": "Out-of-pocket max"
+    },
+    {
+     "role": "body",
+     "order": 21,
+     "text": "$5,400"
+    },
+    {
+     "role": "body",
+     "order": 22,
+     "text": "Primary care visit"
+    },
+    {
+     "role": "body",
+     "order": 23,
+     "text": "$25 copay"
+    },
+    {
+     "role": "body",
+     "order": 24,
+     "text": "Generic drugs"
+    },
+    {
+     "role": "body",
+     "order": 25,
+     "text": "$10 copay"
+    },
+    {
+     "role": "cta",
+     "order": 26,
+     "text": "See full Chippewa details",
+     "href": "#"
+    },
+    {
+     "role": "eyebrow",
+     "order": 27,
+     "text": "Lowest out-of-pocket"
+    },
+    {
+     "role": "heading",
+     "order": 28,
+     "text": "Superior"
+    },
+    {
+     "role": "body",
+     "order": 29,
+     "text": "For families and frequent care: higher premium, smallest bills when you use care."
+    },
+    {
+     "role": "body",
+     "order": 30,
+     "text": "Deductible (ind.)"
+    },
+    {
+     "role": "body",
+     "order": 31,
+     "text": "$500"
+    },
+    {
+     "role": "body",
+     "order": 32,
+     "text": "Out-of-pocket max"
+    },
+    {
+     "role": "body",
+     "order": 33,
+     "text": "$3,500"
+    },
+    {
+     "role": "body",
+     "order": 34,
+     "text": "Primary care visit"
+    },
+    {
+     "role": "body",
+     "order": 35,
+     "text": "$15 copay"
+    },
+    {
+     "role": "body",
+     "order": 36,
+     "text": "Generic drugs"
+    },
+    {
+     "role": "body",
+     "order": 37,
+     "text": "$5 copay"
+    },
+    {
+     "role": "cta",
+     "order": 38,
+     "text": "See full Superior details",
+     "href": "#"
+    },
+    {
+     "role": "cta",
+     "order": 39,
+     "text": "See what care costs",
+     "href": "#tools"
+    }
+   ],
+   "imgCount": 0,
+   "editableTexts": 8,
+   "repeats": [
+    {
+     "unitSelector": "ARTICLE.plan",
+     "count": 3,
+     "unit": {
+      "headings": 1,
+      "ctas": 1,
+      "imgs": 0,
+      "textRuns": 12
+     },
+     "uniform": true
+    }
+   ]
+  },
+  {
+   "section": "answers",
+   "items": [
+    {
+     "role": "eyebrow",
+     "order": 0,
+     "text": "Straight answers"
+    },
+    {
+     "role": "heading",
+     "order": 1,
+     "text": "The questions people actually call about."
+    },
+    {
+     "role": "body",
+     "order": 2,
+     "text": "Our answer library is written from real member service calls, updated monthly, and specific enough that you don't have to phone us to confirm it. Signed-in members see answers matched to their own plan and claims."
+    },
+    {
+     "role": "cta",
+     "order": 3,
+     "text": "Browse all answers",
+     "href": "#"
+    },
+    {
+     "role": "heading",
+     "order": 4,
+     "text": "How do I confirm a provider is in network before I book?"
+    },
+    {
+     "role": "body",
+     "order": 5,
+     "text": "Check the directory listing's \"verified on\" date, or ask us for a written verification with a reference number — it takes one call and holds if the directory was wrong."
+    },
+    {
+     "role": "heading",
+     "order": 6,
+     "text": "Why can the same procedure cost three different amounts?"
+    },
+    {
+     "role": "body",
+     "order": 7,
+     "text": "Facility fees. A hospital outpatient department, an ambulatory surgery center, and an office bill the same procedure at different contracted rates. Our estimator shows all three."
+    },
+    {
+     "role": "heading",
+     "order": 8,
+     "text": "What are your prior authorization criteria — the actual documents?"
+    },
+    {
+     "role": "body",
+     "order": 9,
+     "text": "All 412 active medical policies are in the public policy library, each with a policy number, effective date, and revision history. Your provider can cite them when submitting."
+    },
+    {
+     "role": "heading",
+     "order": 10,
+     "text": "Where does my deductible actually stand?"
+    },
+    {
+     "role": "body",
+     "order": 11,
+     "text": "Your accumulator updates as claims finalize, with a claim-by-claim breakdown you can export. If your math and ours disagree, we'll reconcile it line by line."
+    }
+   ],
+   "imgCount": 0,
+   "editableTexts": 11,
+   "repeats": [
+    {
+     "unitSelector": "P.",
+     "count": 2,
+     "unit": {
+      "headings": 0,
+      "ctas": 0,
+      "imgs": 0,
+      "textRuns": 0
+     },
+     "uniform": false
+    },
+    {
+     "unitSelector": "DIV.qa",
+     "count": 4,
+     "unit": {
+      "headings": 1,
+      "ctas": 0,
+      "imgs": 0,
+      "textRuns": 2
+     },
+     "uniform": true
+    }
+   ]
+  },
+  {
+   "section": "heritage",
+   "items": [
+    {
+     "role": "eyebrow",
+     "order": 0,
+     "text": "About Birch Creek"
+    },
+    {
+     "role": "heading",
+     "order": 1,
+     "text": "Owned by the people we cover. Run from where they live."
+    },
+    {
+     "role": "body",
+     "order": 2,
+     "text": "Birch Creek Health began in 1963 when a cooperative of Chippewa Valley dairy farmers, machinists, and nurses pooled premiums to cover their own families. We're still a member-governed mutual: no outside shareholders, a board elected by members, and a headquarters on the Chippewa River in Eau Claire — not a P.O. box."
+    },
+    {
+     "role": "body",
+     "order": 3,
+     "text": "1963"
+    },
+    {
+     "role": "body",
+     "order": 4,
+     "text": "Founded as the Chippewa Valley Health Cooperative, 412 charter families."
+    },
+    {
+     "role": "body",
+     "order": 5,
+     "text": "1988"
+    },
+    {
+     "role": "body",
+     "order": 6,
+     "text": "Renamed Birch Creek Health; coverage expands across western Wisconsin."
+    },
+    {
+     "role": "body",
+     "order": 7,
+     "text": "2019"
+    },
+    {
+     "role": "body",
+     "order": 8,
+     "text": "First regional plan to publish its full medical policy library without a login."
+    },
+    {
+     "role": "body",
+     "order": 9,
+     "text": "2026"
+    },
+    {
+     "role": "body",
+     "order": 10,
+     "text": "184,000 members across 21 counties. Still one headquarters, still in Eau Claire."
+    },
+    {
+     "role": "heading",
+     "order": 11,
+     "text": "What member-governed means in practice"
+    },
+    {
+     "role": "body",
+     "order": 12,
+     "text": "From our 2025 annual report to members"
+    },
+    {
+     "role": "body",
+     "order": 13,
+     "text": "Premium dollars paid out as care"
+    },
+    {
+     "role": "body",
+     "order": 14,
+     "text": "88.1¢ / $1"
+    },
+    {
+     "role": "body",
+     "order": 15,
+     "text": "Surplus returned as premium credits"
+    },
+    {
+     "role": "body",
+     "order": 16,
+     "text": "$11.2M"
+    },
+    {
+     "role": "body",
+     "order": 17,
+     "text": "Member-elected board seats"
+    },
+    {
+     "role": "body",
+     "order": 18,
+     "text": "9 of 9"
+    },
+    {
+     "role": "body",
+     "order": 19,
+     "text": "Executive bonuses tied to denial rates"
+    },
+    {
+     "role": "body",
+     "order": 20,
+     "text": "$0"
+    },
+    {
+     "role": "cta",
+     "order": 21,
+     "text": "Read the full annual report →",
+     "href": "#"
+    }
+   ],
+   "imgCount": 0,
+   "editableTexts": 6,
+   "repeats": [
+    {
+     "unitSelector": "LI.",
+     "count": 4,
+     "unit": {
+      "headings": 0,
+      "ctas": 0,
+      "imgs": 0,
+      "textRuns": 2
+     },
+     "uniform": true
+    },
+    {
+     "unitSelector": "TR.",
+     "count": 3,
+     "unit": {
+      "headings": 0,
+      "ctas": 0,
+      "imgs": 0,
+      "textRuns": 2
+     },
+     "uniform": true
+    }
+   ]
+  },
+  {
+   "section": "primary-band",
+   "items": [
+    {
+     "role": "body",
+     "order": 0,
+     "text": "Look up what your care costs before you book it."
+    },
+    {
+     "role": "cta",
+     "order": 1,
+     "text": "See what care costs",
+     "href": "#tools"
+    }
+   ],
+   "imgCount": 0,
+   "editableTexts": 1,
+   "repeats": []
+  }
+ ]
+}

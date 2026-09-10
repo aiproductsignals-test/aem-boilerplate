@@ -1,0 +1,164 @@
+/*
+ * plans — the 2026 comparison grid.
+ *
+ * Variant B: the recommended plan takes the gold surface and the wider column.
+ * Contrast on gold — ink #24322c 4.77:1 (AA, body copy OK); pine #1c4d42
+ * 3.41:1 (>= 24px display or rules only, never body copy).
+ *
+ * The recommended card does NOT take the shadow: the captured elevation rule is
+ * "this floats on a dark ground", and gold is not a dark ground. It takes a
+ * pine rule instead.
+ */
+
+.plans .plans-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr 1fr;
+  gap: var(--card-gap);
+  align-items: stretch;
+  margin-top: 32px;
+}
+
+.plans .plan {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px 24px 22px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── the substrate promotion: the recommended plan stands on gold ── */
+.plans .plan.recommended {
+  background: var(--gold);
+  border-color: var(--pine);
+  padding: 30px 28px 26px;
+}
+
+.plans .plan-eyebrow :is(p, em) {
+  display: block;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: var(--t-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  color: var(--gold-deep);
+  margin: 0;
+  max-width: none;
+}
+
+.plans .plan-specs {
+  margin-top: 18px;
+}
+
+/* the authored paragraph IS the row — label left, figure right. Styled by
+   element rather than by a class on the authored node (EW2). */
+.plans .plan-specs p {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding-block: 9px;
+  margin: 0;
+  max-width: none;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+  font-size: var(--t-figure);
+  text-align: right;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.plans .plan.recommended .plan-eyebrow :is(p, em) {
+  color: var(--ink);
+}
+
+.plans .plan-name :is(h2, h3, h4) {
+  font-family: var(--font-display);
+  font-size: var(--t-display-3);
+  font-weight: 600;
+  font-variation-settings: 'opsz' 36;
+  line-height: 1.35;
+  margin-top: 6px;
+}
+
+/* pine on gold is 3.41:1 — legal here only because this is >= 24px display */
+.plans .plan.recommended .plan-name :is(h2, h3, h4) {
+  color: var(--pine);
+  font-size: 30px;
+}
+
+.plans .plan-for p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin-top: 6px;
+  max-width: none;
+}
+
+.plans .plan.recommended .plan-for p {
+  color: var(--ink);
+}
+
+.plans .plan.recommended .plan-specs p {
+  border-bottom-color: rgb(28 77 66 / 28%);
+  font-size: 15px;
+}
+
+.plans .plan-specs p strong {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--t-figure);
+  text-align: left;
+  color: var(--ink-soft);
+  white-space: normal;
+}
+
+.plans .plan.recommended .plan-specs p strong {
+  color: var(--ink);
+}
+
+.plans .plan-actions {
+  margin-top: auto;
+  padding-top: 22px;
+}
+
+.plans .plan-actions p.button-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.plans .plan-actions a.button {
+  width: 100%;
+}
+
+@media (width <= 900px) {
+  .plans .plans-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* the variant's own specificity — a generic mobile rule would lose to
+     .plans .plan.recommended in any media query (#109) */
+  .plans .plan.recommended {
+    grid-column: 1 / -1;
+    order: -1;
+  }
+
+  .plans .plan.recommended .plan-name :is(h2, h3, h4) {
+    font-size: var(--t-display-3);
+  }
+}
+
+@media (width <= 640px) {
+  .plans .plans-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .plans .plan.recommended {
+    grid-column: auto;
+    padding: 24px 24px 22px;
+  }
+}

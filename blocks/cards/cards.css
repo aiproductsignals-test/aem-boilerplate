@@ -1,27 +1,153 @@
-.cards > ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+/*
+ * cards — the canonical repeating-unit block.
+ *
+ * .cards.index is the tools index: a ruled row per unit with the verification
+ * interval in a right-hand mono gutter, so the intervals align into a column.
+ * This replaced the captured four-up stroke-icon feature grid (improvements
+ * item 3) — the grid was the category default and carried no argument for a
+ * data-transparency brand.
+ */
+
+.cards .cards-list {
+  margin-top: 32px;
+  border-top: 1px solid var(--line);
+}
+
+.cards .card {
+  padding-block: 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* ── index variant: icon | body | mono gutter ── */
+.cards.index .card {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  grid-template-columns: 30px minmax(0, 1fr) minmax(180px, 260px);
+  gap: 20px 24px;
+  align-items: start;
 }
 
-.cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
+.cards.index .card-icon {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  margin-top: 2px;
 }
 
-.cards .cards-card-body {
-  margin: 16px;
+.cards .card-icon span.icon,
+.cards .card-icon img {
+  display: block;
+  width: 30px;
+  height: 30px;
 }
 
-.cards .cards-card-image {
-  line-height: 0;
+.cards .card-icon svg {
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: var(--pine);
+  stroke-width: 1.8;
 }
 
-.cards > ul > li img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+.cards.index .card-title {
+  grid-column: 2;
+}
+
+.cards.index .card-body {
+  grid-column: 2;
+}
+
+.cards.index .card-meta {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  padding-left: 20px;
+  border-left: 1px solid var(--line);
+}
+
+/* Wrappers carry the classes; authored elements are styled as descendants
+   so the workspace editor's re-render still matches (EW2). */
+.cards .card-title :is(h2, h3, h4) {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  font-variation-settings: 'opsz' 36;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.cards .card-body p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin-top: 4px;
+  max-width: 58ch;
+}
+
+.cards .card-body p.arrow-wrap {
+  margin-top: 10px;
+}
+
+.cards .card-body p.arrow-wrap :where(a) {
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  color: var(--pine);
+}
+
+.cards .card-body p.arrow-wrap :where(a):hover {
+  text-decoration: underline;
+}
+
+.cards .card-meta p {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  text-align: right;
+  margin: 0;
+  max-width: none;
+}
+
+.cards .card-meta p strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+@media (width <= 1000px) {
+  .cards.index .card {
+    grid-template-columns: 30px minmax(0, 1fr);
+  }
+
+  .cards.index .card-meta {
+    grid-column: 2;
+    grid-row: auto;
+    text-align: left;
+    border-left: 0;
+    padding-left: 0;
+    border-top: 1px solid var(--line);
+    padding-top: 10px;
+    margin-top: 4px;
+  }
+
+  .cards .card-meta p {
+    text-align: left;
+  }
+}
+
+@media (width <= 640px) {
+  .cards.index .card {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .cards.index .card-icon {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .cards.index .card-title,
+  .cards.index .card-body,
+  .cards.index .card-meta {
+    grid-column: 1;
+  }
 }

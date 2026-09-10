@@ -1,20 +1,90 @@
+/*
+ * footer — paper ground, a 1.4/1/1/1 link grid, then the legal band.
+ * The footer's own top margin is what separates it from the last section (#31).
+ */
+
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+  background: var(--paper);
+  color: var(--ink-soft);
+  margin-top: 0;
 }
 
-footer .footer > div {
-  margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
+footer .footer-root {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 48px var(--gutter) 36px;
 }
 
-footer .footer p {
+footer .foot-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 32px;
+}
+
+footer .foot-col h2,
+footer .foot-col h3,
+footer .foot-col h4 {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+footer .foot-col p {
+  font-size: var(--t-figure);
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin: 0;
+  max-width: none;
+}
+
+footer .foot-col ul {
+  list-style: none;
+  padding-left: 0;
   margin: 0;
 }
 
-@media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
+footer .foot-col li {
+  margin-bottom: 7px;
+}
+
+footer .foot-col a:any-link {
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: var(--t-figure);
+}
+
+footer .foot-col a:hover {
+  color: var(--pine);
+  text-decoration: underline;
+}
+
+footer .foot-legal {
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+footer .foot-legal p {
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  max-width: 92ch;
+  margin: 0;
+}
+
+@media (width <= 900px) {
+  footer .foot-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width <= 640px) {
+  footer .foot-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
   }
 }

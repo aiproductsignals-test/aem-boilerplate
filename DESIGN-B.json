@@ -1,0 +1,437 @@
+{
+  "_provenance": {
+    "generatedBy": "stardust:direct Phase 4 (invoked by stardust:uplift)",
+    "generatedAt": "2026-09-09T00:00:00Z",
+    "describes": "target state - variant B",
+    "mode": "A (brand-faithful)",
+    "capturedSignal": "signal-strong",
+    "source": "stardust/current/_brand-extraction.json + stardust/current/_style-probe.json + stardust/uplift-improvements.md + stardust/uplift-questions.md",
+    "variant": "B"
+  },
+  "colors": {
+    "paper": "#FBFBF8",
+    "card": "#FFFFFF",
+    "birch": "#F3F1E8",
+    "pine": "#1C4D42",
+    "pine-deep": "#143B33",
+    "ink": "#24322C",
+    "ink-soft": "#55645D",
+    "gold": "#C3922E",
+    "gold-deep": "#8A6410",
+    "gold-on-dark": "#E4C77E",
+    "line": "#DDE1D8",
+    "line-on-dark": "rgba(255,255,255,0.16)",
+    "text-on-dark": "#F4F7F3",
+    "text-on-dark-muted": "#D7E2DA",
+    "ink-on-dark": "#F4F7F3",
+    "ink-on-dark-soft": "#D7E2DA",
+    "ink-on-dark-mute": "#B9CCC2",
+    "ink-on-deep": "#DCE6E0",
+    "ink-on-deep-soft": "#E8EFE9",
+    "ink-on-pine-soft": "#EAF1EB"
+  },
+  "typography": {
+    "display": {
+      "family": "Fraunces",
+      "fallback": "serif",
+      "weights": [
+        600
+      ],
+      "sizes": [
+        "52px/56.16px/-0.52px",
+        "34px/44px/-0.34px",
+        "24px/34px",
+        "21px/23.1px"
+      ]
+    },
+    "body": {
+      "family": "Public Sans",
+      "fallback": "system-ui, sans-serif",
+      "weights": [
+        400,
+        500,
+        600,
+        700
+      ],
+      "base": "16.5px/1.6",
+      "sizes": [
+        "18px/28.8px",
+        "16.5px/26.4px",
+        "14px/22.4px",
+        "12.5px/20px"
+      ]
+    },
+    "mono": {
+      "family": "Spline Sans Mono",
+      "fallback": "monospace",
+      "weights": [
+        400,
+        500
+      ],
+      "sizes": [
+        "24px/34px",
+        "14px/22.4px"
+      ]
+    },
+    "eyebrow": "12.5px/700/0.14em/uppercase",
+    "scale": {
+      "kind": "seven-step (formalised from captured ad-hoc 17)",
+      "steps": [
+        "12.5px",
+        "14px",
+        "16.5px",
+        "18px",
+        "24px",
+        "34px",
+        "52px"
+      ],
+      "displayRatio": 1.42,
+      "note": "Every step was already load-bearing in the capture; only half-pixel neighbours were dropped. No new size introduced (Mode A)."
+    }
+  },
+  "rounded": {
+    "container": "10px",
+    "control": "6px"
+  },
+  "spacing": {
+    "sectionPadding": {
+      "desktop": "64px",
+      "tablet": "48px",
+      "mobile": "32px"
+    },
+    "sectionPaddingSupporting": {
+      "desktop": "44px",
+      "tablet": "36px",
+      "mobile": "28px"
+    },
+    "densityTier": "balanced",
+    "densityFloor": {
+      "active": true,
+      "reason": "brand register with 9 captured sections (>5) and 3 audience tracks (>2)",
+      "bound": "sectionPadding.desktop capped at <=64px and >=40px on every variant",
+      "capturedValue": "84px (breached the floor)"
+    },
+    "container": "1120px",
+    "gutter": "24px",
+    "cardGap": "20px",
+    "splitGap": "56px",
+    "scale": [
+      "4px",
+      "8px",
+      "12px",
+      "16px",
+      "20px",
+      "24px",
+      "28px",
+      "44px",
+      "56px",
+      "64px"
+    ]
+  },
+  "elevation": {
+    "shadow": "0 18px 40px rgba(10, 30, 25, 0.35)",
+    "rule": "cards on dark grounds get the shadow; cards on light grounds get a 1px line border",
+    "shadowSoft": "0 14px 24px rgba(10,30,25,0.10) \u2014 the mobile disclosure-nav panel only"
+  },
+  "components": [
+    "button-primary",
+    "button-secondary",
+    "card",
+    "ledger",
+    "link",
+    "badge"
+  ],
+  "breakpoints": [
+    "560px",
+    "900px",
+    "1000px"
+  ],
+  "extensions": {
+    "componentStyle": {
+      "cardBorder": "1px solid #DDE1D8",
+      "cardBorderOnDark": "1px solid rgba(255,255,255,0.16)",
+      "buttonRadius": "6px",
+      "buttonPadding": "11px 20px",
+      "buttonWeight": 600,
+      "buttonSize": "15px",
+      "variants": [
+        "button-primary (pine fill)",
+        "button-secondary (pine outline)",
+        "button-on-dark (paper fill on pine)"
+      ],
+      "focusRing": "3px solid #8A6410, 2px offset",
+      "focusRingContrast": {
+        "paper": 5.18,
+        "card": 5.37,
+        "birch": 4.75,
+        "note": "clears the 3:1 non-text minimum on every light ground; #C3922E is retained on pine (3.41) and pine-deep (4.39)"
+      },
+      "iconStyle": "inline SVG, stroke-only, 1.8 stroke-width, stroke: pine",
+      "dualCTAPattern": "single repeated primary ('See what care costs') plus investigative secondary links; no dual-CTA hero"
+    },
+    "systemComponentRoles": {
+      "utility-topbar": {
+        "purpose": "member-services contact and language access",
+        "positionClass": "above-header",
+        "constraint": "language access stays above the logo at every width"
+      },
+      "site-header": {
+        "purpose": "identity and primary navigation",
+        "positionClass": "sticky-top",
+        "constraint": "primary navigation reachable at every width; skip link precedes it in focus order"
+      },
+      "measures-band": {
+        "purpose": "audited operational measures as structural proof",
+        "positionClass": "immediately-below-hero",
+        "constraint": "every figure carries its measured-as-of qualifier"
+      },
+      "site-footer": {
+        "purpose": "link grid including the dedicated Transparency column",
+        "positionClass": "page-end",
+        "constraint": "the Transparency column is never merged or abbreviated"
+      }
+    },
+    "voice": {
+      "register": "brand",
+      "dos": [
+        "Attach a figure and a date to every claim ('96.4% of claims processed within 14 days (2025 audited)')",
+        "Use investigative CTA verbs: see, compare, run, look up, read, browse",
+        "Name places, not tiers: Driftless, Chippewa, Superior; Eau Claire, Chippewa Valley",
+        "Admit fallibility in plain words ('If your math and ours disagree, we'll reconcile it line by line')",
+        "Sentence case in every heading, including eyebrow parents (captured: 0 of 22 headings uppercase)"
+      ],
+      "donts": [
+        "'Get started', 'Learn more', 'Sign up' or any generic CTA bucket (captured: 0 of 34 affordances matched one)",
+        "Exclamation marks, urgency devices, countdowns, second-person cheerleading",
+        "Metal-tier plan naming",
+        "Any figure, address, quote or named person not present in the capture",
+        "Language that implies a real-time feed - the measures are published and dated, not live"
+      ]
+    },
+    "iaPriorities": [
+      {
+        "signal": "audience-routing",
+        "evidence": "pages/birch-creek-homepage-html.json#ctas \u2014 three distinct audience CTAs render above the fold: 'See what care costs' (prospect), 'Compare plans' (prospect/plan-select), 'Member sign in' (existing member); PRODUCT.md names three audiences in a fixed priority order",
+        "preserveAs": "first-viewport",
+        "scope": "site-wide",
+        "mutability": "movable"
+      },
+      {
+        "signal": "crisis-affordance",
+        "evidence": "pages/birch-creek-homepage-html.json#sections[div.topbar] \u2014 member-services phone number and hours render in the first viewport, above the logo, alongside Espanol / Hmoob / Language assistance and TTY 711 in the legal band",
+        "preserveAs": "first-viewport",
+        "scope": "site-wide",
+        "mutability": "locked"
+      },
+      {
+        "signal": "commercial-conversion",
+        "evidence": "pages/birch-creek-homepage-html.json#sections[section.section.plans] \u2014 three plan cards with dl pricing rows and one recommended card carrying the solid button; primary compare path",
+        "preserveAs": "above-supporting-bands",
+        "scope": "page",
+        "mutability": "movable"
+      },
+      {
+        "signal": "signature-preservation",
+        "evidence": "_brand-extraction.json#voice.heroNote \u2014 'The hero asset is not an image - it is the .ledger card, a working cost table'; _brand-extraction.json#motifs.gradients[0] birch lenticels at .hero::before",
+        "preserveAs": "first-viewport-primary",
+        "scope": "site-wide",
+        "mutability": "locked",
+        "note": "Per intent-dimensions.md 8b. The ledger-as-hero and the lenticel motif are the signature; flattening either to a generic headline hero is a render-refusal. Exempt from the surprise budget."
+      },
+      {
+        "signal": "transparency-column",
+        "evidence": "_brand-extraction.json#systemComponents[site footer] \u2014 a dedicated Transparency column (machine-readable price files, quality reports, network adequacy filings) called out as load-bearing for this brand",
+        "preserveAs": "footer-intact",
+        "scope": "site-wide",
+        "mutability": "locked"
+      }
+    ],
+    "divergence": {
+      "toolkit_version": "v1.0 (stardust v2)",
+      "seed": {
+        "input": "Birch Creek Health|2026-09-09",
+        "decade": "2025-now",
+        "craft": "ledger / accounting document",
+        "register": "audit report",
+        "ground_family": "warm-four-ground (inherited)",
+        "picked_by": "reasoned: captured brand surface (Mode A) + researched anchors",
+        "overrides": [
+          {
+            "dimension": "ground_family",
+            "override": "brand-faithful",
+            "note": "Mode C: the brand's captured four-ground warm system wins over any rolled ground family."
+          }
+        ]
+      },
+      "font_deck": "brand-inherited",
+      "font_deck_picked_by": "user-constraint (Mode A pin)",
+      "palette_source": {
+        "source": "inherited from _brand-extraction.json",
+        "picked_by": "user-constraint (Mode A pin)",
+        "libraryUsed": false
+      },
+      "anti_toolbox_count": 3,
+      "anti_toolbox_hits": [
+        {
+          "move": "Sticky top navigation",
+          "justification": "Captured system component (header.site, sticky, 1px bottom rule, no shadow). Mode A inherits it; removing it would be a change to the brand surface, not a divergence win."
+        },
+        {
+          "move": "Animated stat counters (variant C only)",
+          "justification": "The brand stakes itself on eight published proof figures set in a dedicated monospace face; PRODUCT.md principle 2 makes numerals a brand surface. C animates each figure to its published value with its measured-as-of stamp travelling with it. Justified by the captured trait, and bounded by the fabricated-liveness guardrail below."
+        },
+        {
+          "move": "Four-up card grid",
+          "justification": "NOT justified - removed. Improvement 3 replaces the captured four-up stroke-icon tool grid with a ruled index, grounded on the gov.uk retrieval. Recorded here because the captured page contained the hit and the target does not."
+        }
+      ],
+      "off_toolbox_moves": [
+        "Ledger table as the wider hero column, out-scaling the 52px headline (improvement 4; anchored on wise.com/us/pricing)",
+        "Utility layer re-set as a ruled index with a mono verification gutter instead of icon cards (improvement 3; anchored on gov.uk)",
+        "Section rule drawn as the logo's own lenticel dash (improvement 5)",
+        "Variant B: a rationed text-only accent promoted to a full section ground (T-color-imbalance)"
+      ],
+      "audit_adjustments": [
+        "Fabricated-liveness guardrail added to the anti-reference set: variant C's live-systems register loses its pulse dots, refresh sweep and operational ticker because the brand publishes dated measures, not real-time feeds.",
+        "Editorial-register vocabulary check: no editorial vocabulary applied - the resolved register is audit-report, and the editorial motion register was explicitly rejected in Phase 3a."
+      ],
+      "brand_faithful_inversions": [
+        {
+          "rule": "OKLCH-only color authoring",
+          "retained": "captured hex values",
+          "reason": "Mode A pins the palette to _brand-extraction.json; re-expressing pinned brand hexes in OKLCH risks drift on round-trip and breaks token-to-source traceability."
+        },
+        {
+          "rule": "No pure white",
+          "retained": "#FFFFFF card surface",
+          "reason": "Captured card ground, weight 221, carries every ledger, tool and plan surface. It is the brand's document-paper reading and is pinned under Mode A."
+        },
+        {
+          "rule": "Type scale ratio >= 1.25 across all steps",
+          "retained": "18px lede against 16.5px body (1.09)",
+          "reason": "Both sizes are captured and load-bearing; the >=1.25 floor is honoured on the display ladder (52/34/24, ratio >= 1.42) where hierarchy is actually carried."
+        },
+        {
+          "rule": "craft-floor ban: no kicker/eyebrow above a heading",
+          "retained": "the captured eyebrow, above every section h2 without exception",
+          "reason": "Eyebrow x6 is a captured system component (_brand-extraction.json#motifs.patterns) and precedes every section h2 on the source page; impeccable SKILL.md 'The brief wins' and craft-floor.md 'a pinned brief or the committed visual world overrides anything here' both give the pinned world precedence. Removing it would be redirecting a pinned brand toward the tool's default taste."
+        }
+      ],
+      "references_used": [
+        {
+          "source": "websearch",
+          "title": "GOV.UK",
+          "url": "https://www.gov.uk",
+          "grounds": "retrieved: ruled indexed link lists carrying a utility IA with hierarchy from type, rules and spacing - the contemporary counter-example grounding improvement 3's dated-pattern claim",
+          "tag": "off-toolbox"
+        },
+        {
+          "source": "websearch",
+          "title": "Wise - Pricing",
+          "url": "https://wise.com/us/pricing/",
+          "grounds": "retrieved: a published fee table as primary content with figures aligned into right-hand columns - grounds improvement 4 (the proof artifact can carry the first viewport)",
+          "tag": "off-toolbox"
+        },
+        {
+          "source": "websearch",
+          "title": "Plausible Analytics",
+          "url": "https://plausible.io",
+          "grounds": "retrieved: product/data visual as hero rather than photography, and large trust numerals as the credibility surface - verifies count-up-to-published-figure as observed practice; its icon-card feature grid confirms that pattern is the category default",
+          "tag": "in-toolbox"
+        }
+      ],
+      "reference_tier": "websearch (tier 2 - Refero MCP unavailable)",
+      "reference_gaps": [
+        "No contemporary named site using a rationed gold/ochre as a large filled ground was retrievable within the 5-search budget; variant B's compositional anchor rests on captured evidence (T-color-imbalance) alone. No from-memory reference substituted, per reference-research.md Hard rules."
+      ]
+    }
+  },
+  "narrative": {
+    "northStar": "An insurer's homepage that reads like the audit it invites - the numbers are the design, and everything else gets out of their way.",
+    "overview": "A brand-faithful refresh of a single-page member-governed health plan site. Palette and typography are pinned; what changes is execution - the signature cost ledger leads its own hero, the ad-hoc 17-step scale becomes seven, vertical hierarchy stops being carried by ground colour alone, the rationed gold splits into an AA-passing light-ground value, and navigation survives below 900px.",
+    "keyCharacteristics": [
+      "Numerals set in a dedicated monospace face, right-aligned into ledger columns",
+      "Four warm grounds doing the section separation, two padding tiers doing the ranking",
+      "One shadow, reserved for cards on dark grounds; two radii; zero photographs",
+      "The birch lenticel - the logo's own construction - as the one repeated decorative mark",
+      "Investigative CTA vocabulary with a single repeated primary action"
+    ],
+    "rules": [
+      "Zero raster images. The hero asset is the ledger table.",
+      "No fabricated content: every figure, address, date and name comes from the capture or renders as [data-placeholder].",
+      "Desktop section padding stays within 40-64px on every variant (multi-audience density floor).",
+      "The Transparency footer column, the language-access topbar and the ledger-as-hero are locked IA priorities.",
+      "Motion is declared per variant in DESIGN-<id>.json only; A and B render static."
+    ],
+    "dos": [
+      "Let a table be the largest thing in the first viewport",
+      "Rule sections with the lenticel dash rather than adding a new divider vocabulary",
+      "Keep all 32 investigative CTA labels and repeat one primary across the page"
+    ],
+    "donts": [
+      "Introduce a font or a colour outside the captured surface",
+      "Replace the ledger hero with a headline-and-photo composition",
+      "Imply live data anywhere on the page"
+    ]
+  },
+  "variant": {
+    "id": "B",
+    "role": "One captured trait amplified - the design-team motivator",
+    "pitch": "What if the gold the brand rations to three elements became a surface you stand on?",
+    "capturedTraitAmplified": "the deliberately rationed accent - gold used as text and outline only, never as a fill",
+    "evidence": [
+      "brand-review.html Tensions T-color-imbalance: '#C3922E gold (accent) - text and outline only, never a fill. It never sets a button, a chip, or a ground... probably the single most characteristic move in the palette'",
+      "_brand-extraction.json#palette: gold carries weight 3 against pine 368 and card 221 - the least-used colour on the page and the only one with a distinct identity",
+      "_brand-extraction.json#accessibility.measuredContrast: 2.71 / 2.81 / 2.48:1 - the rationing is why gold is only ever small text, which is exactly why it fails AA"
+    ],
+    "compositionBet": "Gold graduates from a 3-element accent to one of the page's grounds. The audited-measures band and the recommended-plan surface move onto gold with ink over them; pine retreats to the hero and heritage bookends so its 368 weight stops flattening the page; pine-deep stays the topbar. The palette is unchanged - only its proportions move.",
+    "motion": "static - no cinematic layer",
+    "improvementsApplied": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "improvementsResolvedStructurally": {
+      "1": "The gold AA failure is resolved by inversion rather than by patching: gold becomes a ground carrying #24322C ink at 4.77:1. gold-deep is still declared for the light-ground eyebrows that remain on paper, card and birch."
+    },
+    "groundLadder": {
+      "pine": "hero and heritage bookends",
+      "pine-deep": "topbar",
+      "gold": "audited-measures band, recommended-plan surface",
+      "birch": "plans section ground (as captured)",
+      "paper": "tools, answers, header, footer",
+      "card": "ledger, tool index and remaining plan surfaces"
+    },
+    "contrastOnGold": {
+      "ink #24322C": 4.77,
+      "pine #1C4D42": 3.41,
+      "rule": "body copy on gold is ink (4.77, AA). Pine on gold (3.41) is permitted only at >=24px display sizes or as a border, never for body copy."
+    },
+    "differentiationFrom": {
+      "A": [
+        "ground ladder re-weighted: gold promoted from a 3-element accent to two full surfaces, pine demoted to bookends",
+        "plan grid re-composed around the gold recommended card instead of three equal columns"
+      ],
+      "C": [
+        "changes colour proportion and plan-grid composition; C changes neither",
+        "renders entirely static; C's whole bet is the motion layer"
+      ]
+    },
+    "dominantDimension": "colour-proportion",
+    "compositionDelta_vs_A": [
+      "layout: audited-measures band moves from the captured pine-deep onto a gold ground with ink over it, and grows from a thin strip to a full band",
+      "layout: plans section re-composes to 1fr 1.35fr 1fr around a gold recommended-plan surface instead of three equal columns",
+      "layout: the recommended plan drops the captured card-white surface for gold plus a pine rule (elevation stays reserved for cards on dark grounds)"
+    ],
+    "compositionDelta_vs_C": [
+      "layout: ground ladder re-weighted across four sections (C holds A's grounds exactly)",
+      "layout: plans section re-composed around the recommended card (C holds A's three equal columns)"
+    ],
+    "renderCorrection": "An earlier draft expanded birch into tools and answers as well. Cut after the first render: paper and birch are too close in value to alternate three times and the sections washed together. B's ground delta is the gold promotion alone."
+  }
+}

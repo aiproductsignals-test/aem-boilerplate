@@ -1,0 +1,76 @@
+/*
+ * measures — variant B's substrate promotion.
+ *
+ * The captured band sat on pine-deep and the gold was three text elements at
+ * palette weight 3. Here gold is the ground the page's proof stands on, with
+ * ink over it at 4.77:1. Pine on gold is 3.41:1 — permitted only as a rule or
+ * at >= 24px display sizes, never for body copy.
+ *
+ * The block paints its own section full-bleed (block-owned sections are never
+ * styled through section metadata — that vocabulary is for default content).
+ */
+
+main .section.measures-container {
+  background: var(--gold);
+  color: var(--ink);
+  padding-block: var(--pad-support);
+  position: relative;
+}
+
+/* the lenticel dash — the logo's own motif — rules the top of the band */
+main .section.measures-container::before {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 2px;
+  background-image: var(--lenticel-rule-on-gold);
+  opacity: 0.55;
+}
+
+.measures .measures-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px var(--gutter);
+}
+
+.measures .measure-value :is(p, h3, h4) {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0;
+  max-width: none;
+}
+
+.measures .measure-caption :is(p, h4) {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--ink);
+  margin-top: 8px;
+  max-width: 30ch;
+}
+
+@media (width <= 900px) {
+  .measures .measures-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px var(--gutter);
+  }
+}
+
+@media (width <= 640px) {
+  .measures .measures-list {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .measures .measure-value :is(p, h3, h4) {
+    font-size: 26px;
+  }
+}
