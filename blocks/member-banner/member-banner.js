@@ -18,7 +18,9 @@
  * Numerals take the brand's ledger face the same way — see /scripts/personalization.js.
  */
 
-import { restoreSlots, wrapFigures } from '../../scripts/personalization.js';
+import {
+  restoreSlots, wrapFigures, plainText, cloneInline,
+} from '../../scripts/personalization.js';
 
 const text = (el) => (el ? el.textContent.trim() : '');
 const isFilled = (el) => !!el && !!el.textContent.trim();
@@ -45,9 +47,9 @@ function buildIdentity(row) {
   label.className = 'member-banner-who';
   if (isFilled(cells[1])) {
     label.append(`${text(cells[0])} `);
-    [...cells[1].childNodes].forEach((n) => label.append(n.cloneNode(true)));
+    cloneInline(cells[1], label);
   } else {
-    [...cells[0].childNodes].forEach((n) => label.append(n.cloneNode(true)));
+    cloneInline(cells[0], label);
   }
   el.append(label);
   return el;
@@ -63,7 +65,7 @@ function buildBanner(row) {
     + '<path d="M4.8 8.2l2.2 2.2 4.2-4.6" stroke="currentColor" stroke-width="1.7" '
     + 'stroke-linecap="round" stroke-linejoin="round"/></svg>';
   const copy = document.createElement('span');
-  [...source.childNodes].forEach((n) => copy.append(n.cloneNode(true)));
+  cloneInline(source, copy);
   el.append(copy);
   return el;
 }
@@ -80,7 +82,7 @@ function buildCell(row) {
 
   const value = document.createElement('span');
   value.className = 'member-banner-value';
-  if (cells[1]) [...cells[1].childNodes].forEach((n) => value.append(n.cloneNode(true)));
+  cloneInline(cells[1], value);
   el.append(value);
 
   const pct = parseFloat(text(cells[2]));
@@ -88,7 +90,8 @@ function buildCell(row) {
     const meter = document.createElement('div');
     meter.className = 'member-banner-meter';
     meter.setAttribute('role', 'img');
-    meter.setAttribute('aria-label', `${text(cells[1])} — ${Math.round(pct)}%`);
+    // an aria-label cannot hold markup, so the marker is reduced to its value
+    meter.setAttribute('aria-label', `${plainText(text(cells[1]))} — ${Math.round(pct)}%`);
     const fill = document.createElement('i');
     fill.style.width = `${Math.max(0, Math.min(100, pct))}%`;
     meter.append(fill);
@@ -98,7 +101,7 @@ function buildCell(row) {
   if (isFilled(cells[3])) {
     const note = document.createElement('span');
     note.className = 'member-banner-note-small';
-    [...cells[3].childNodes].forEach((n) => note.append(n.cloneNode(true)));
+    cloneInline(cells[3], note);
     el.append(note);
   }
 

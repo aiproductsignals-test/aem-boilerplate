@@ -19,7 +19,9 @@
  * Slots and numerals — see /scripts/personalization.js.
  */
 
-import { restoreSlots, wrapFigures } from '../../scripts/personalization.js';
+import {
+  restoreSlots, wrapFigures, plainText, cloneInline,
+} from '../../scripts/personalization.js';
 
 const isFilled = (el) => !!el && !!el.textContent.trim();
 const hasHeading = (el) => !!el
@@ -60,7 +62,7 @@ function buildItem(row, open) {
   const label = document.createElement('span');
   // the heading's text becomes the summary label; a real <summary> is the
   // accessible control, so the authored h3 must not survive inside it
-  label.textContent = qCell.textContent.trim();
+  label.textContent = plainText(qCell.textContent.trim()) || qCell.textContent.trim();
   summary.append(label);
   item.append(summary);
 
@@ -77,7 +79,7 @@ function buildItem(row, open) {
     check.append(key);
     const path = document.createElement('span');
     path.className = 'faq-accordion-check-path';
-    [...cCell.childNodes].forEach((n) => path.append(n.cloneNode(true)));
+    cloneInline(cCell, path);
     check.append(path);
     body.append(check);
   }
@@ -98,7 +100,8 @@ export default function decorate(block) {
   if (firstCells.length === 1 && !hasHeading(firstCells[0])) {
     meta = document.createElement('p');
     meta.className = 'faq-accordion-meta';
-    meta.textContent = firstCells[0].textContent.trim();
+    meta.textContent = plainText(firstCells[0].textContent.trim())
+      || firstCells[0].textContent.trim();
     items = rows.slice(1);
   }
 
