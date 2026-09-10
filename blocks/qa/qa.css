@@ -1,0 +1,32 @@
+/*
+ * qa — bottom-ruled rows, question over muted answer. Open by default;
+ * the openness is the brand's transparency thesis, not an oversight.
+ */
+
+.qa .qa-item {
+  padding-block: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.qa .qa-item:first-child {
+  padding-top: 0;
+}
+
+.qa .qa-question :is(h2, h3, h4, p) {
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0;
+  max-width: none;
+}
+
+.qa .qa-answer p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin-top: 6px;
+  max-width: none;
+}

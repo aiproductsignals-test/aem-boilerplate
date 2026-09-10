@@ -1,0 +1,56 @@
+{
+  "_provenance": {
+    "writtenBy": "stardust:deploy runtime-detection probe",
+    "writtenAt": "2026-09-09T00:00:00Z",
+    "method": "read the target's own scripts/scripts.js + scripts/aem.js + styles/styles.css",
+    "boilerplate": "adobe/aem-boilerplate @ main (cloned 2026-09-09)"
+  },
+  "runtime": "vanilla-eds",
+  "blockWrapperClass": "block",
+  "blockDecoration": {
+    "addsClass": "block",
+    "addsDataAttr": "data-block-name",
+    "wrapperClass": "<name>-wrapper (on block.parentElement)",
+    "sectionClass": "<name>-container (on the closest .section)",
+    "verifiedAt": "scripts/aem.js:547 decorateBlock"
+  },
+  "buttonClasses": "a.button / a.button.primary / a.button.secondary / a.button.accent, inside p.button-wrapper",
+  "buttonization": "formatted-only",
+  "buttonizationNotes": [
+    "requires an authored <strong> or <em> around the anchor (scripts.js decorateButtons)",
+    "skips anchors containing an <img>",
+    "skips when the paragraph holds text beyond the link",
+    "skips URL-display links (href === displayed text)",
+    "REPLACES the strong/em with the classed anchor - block JS must not expect a surviving wrapper",
+    "<strong>+<em> together => .accent"
+  ],
+  "wrapTextNodes": {
+    "present": true,
+    "validWrappers": ["P","PRE","UL","OL","PICTURE","TABLE","BLOCKQUOTE","H1","H2","H3","H4","H5","H6"],
+    "note": "#104 - a cell whose first element child is not a valid wrapper, or that leads with PICTURE followed by anything, has its ENTIRE content folded into one <p>. Collectors must expand the wrapper."
+  },
+  "fragmentScriptPolicy": "inert-innerHTML",
+  "emptySectionCollapse": true,
+  "emptySectionCollapseNote": "This clone ships NO `main .section:empty` rule. The metadata block leaves an empty padded section after its content is consumed into <head>, so the foundation MUST add `main .section:empty { display: none }` or an empty band sits between header and first section.",
+  "globalBoxSizing": false,
+  "globalBoxSizingNote": "#106 - this clone sets box-sizing only on a.button/button.button (styles.css:175), NOT globally. The foundation MUST add `*, *::before, *::after { box-sizing: border-box }` or any %-width + padding grid silently wraps.",
+  "bodyGate": {
+    "present": true,
+    "rule": "body { display: none } + body.appear { display: block }",
+    "verifiedAt": "styles/styles.css:73-85",
+    "policy": "KEEP - loadEager() adds .appear after decorateMain()"
+  },
+  "navHeightReservation": {
+    "present": true,
+    "default": "64px",
+    "rule": "header { height: var(--nav-height) } + header .header { visibility: hidden }",
+    "verifiedAt": "styles/styles.css:40, 87-93",
+    "action": "retune --nav-height to the Birch Creek chrome's real height (topbar + nav rows)"
+  },
+  "autoBlocks": {
+    "fragments": "a[href*=\"/fragments/\"] auto-loaded",
+    "widgets": "buildWidgetAutoBlocks(main)",
+    "note": "buildAutoBlocks is project-owned; no video/embed auto-block ships by default"
+  },
+  "stockBlocks": ["cards", "columns", "footer", "fragment", "header", "hero", "widget"]
+}

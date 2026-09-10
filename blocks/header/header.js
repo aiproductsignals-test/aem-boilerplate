@@ -124,22 +124,37 @@ export default async function decorate(block) {
   nav.id = 'nav';
   while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
 
-  const classes = ['brand', 'sections', 'tools'];
+  // Birch Creek chrome is four authored sections: the utility bar (member
+  // services + language access, which is a LOCKED first-viewport IA priority),
+  // then the stock brand / sections / tools contract.
+  const classes = ['utility', 'brand', 'sections', 'tools'];
   classes.forEach((c, i) => {
     const section = nav.children[i];
     if (section) section.classList.add(`nav-${c}`);
   });
 
   const navBrand = nav.querySelector('.nav-brand');
-  const brandLink = navBrand.querySelector('.button');
-  if (brandLink) {
-    brandLink.className = '';
-    brandLink.closest('.button-container').className = '';
+  if (navBrand) {
+    const brandLink = navBrand.querySelector('.button');
+    if (brandLink) {
+      brandLink.className = '';
+      // this clone emits p.button-wrapper, not .button-container — the stock
+      // line assumes the older class and throws on null
+      const wrap = brandLink.closest('.button-wrapper, .button-container');
+      if (wrap) wrap.className = '';
+    }
   }
 
   const navSections = nav.querySelector('.nav-sections');
   if (navSections) {
     navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
+      // the delivery pipeline wraps each trigger link in a <p> on live (#98);
+      // the harness/authored shape has a bare <a>. Normalize both.
+      const trigger = navSection.querySelector(':scope > a, :scope > p > a');
+      if (trigger && trigger.parentElement.tagName === 'P'
+        && trigger.parentElement.children.length === 1) {
+        trigger.parentElement.replaceWith(trigger);
+      }
       if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
       navSection.addEventListener('click', () => {
         if (isDesktop.matches) {
@@ -157,6 +172,9 @@ export default async function decorate(block) {
   hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
       <span class="nav-hamburger-icon"></span>
     </button>`;
+  // the utility bar stays above the nav row and out of the hamburger
+  const navUtility = nav.querySelector('.nav-utility');
+  if (navUtility) nav.prepend(navUtility);
   hamburger.addEventListener('click', () => toggleMenu(nav, navSections));
   nav.prepend(hamburger);
   nav.setAttribute('aria-expanded', 'false');

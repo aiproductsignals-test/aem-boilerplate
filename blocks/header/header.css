@@ -1,69 +1,192 @@
-/* header and nav layout */
+/*
+ * header — Birch Creek chrome: a pine-deep utility bar above a sticky paper
+ * nav row. Lifted from the prototype's own header CSS.
+ *
+ * The utility bar carries member services and language access. Language access
+ * sits ABOVE the logo — a regulatory and trust signal, and a locked
+ * first-viewport IA priority (DESIGN.json § extensions.iaPriorities).
+ */
+
 header .nav-wrapper {
-  background-color: var(--background-color);
+  background: var(--paper);
   width: 100%;
-  z-index: 2;
+  z-index: 50;
   position: fixed;
+  top: 0;
 }
 
 header nav {
   box-sizing: border-box;
   display: grid;
   grid-template:
-    'hamburger brand tools' var(--nav-height)
-    'sections sections sections' 1fr / auto 1fr auto;
+    'utility utility utility' auto
+    'hamburger brand tools' auto
+    'sections sections sections' auto / auto 1fr auto;
   align-items: center;
-  gap: 0 24px;
   margin: auto;
-  max-width: 1248px;
-  height: var(--nav-height);
-  padding: 0 24px;
-  font-family: var(--body-font-family);
+  font-family: var(--font-body);
 }
 
 header nav[aria-expanded='true'] {
-  grid-template:
-    'hamburger brand' var(--nav-height)
-    'sections sections' 1fr
-    'tools tools' var(--nav-height) / auto 1fr;
   overflow-y: auto;
   min-height: 100dvh;
 }
 
-@media (width >= 900px) {
-  header .nav-wrapper {
-    position: relative;
-  }
-
-  header nav {
-    display: flex;
-    justify-content: space-between;
-    gap: 0 32px;
-    max-width: 1264px;
-    padding: 0 32px;
-  }
-
-  header nav[aria-expanded='true'] {
-    min-height: 0;
-    overflow: visible;
-  }
+/* ── utility bar ── */
+header nav .nav-utility {
+  grid-area: utility;
+  background: var(--pine-deep);
+  color: var(--ink-on-deep);
+  font-size: 13px;
+  width: 100%;
 }
 
-header nav p {
+header nav .nav-utility .default-content-wrapper {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 8px var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  gap: 8px 20px;
+  flex-wrap: wrap;
+}
+
+header nav .nav-utility p {
   margin: 0;
-  line-height: 1;
+  color: var(--ink-on-deep);
+  max-width: none;
+  font-size: 13px;
 }
 
-header nav a:any-link {
-  color: currentcolor;
+header nav .nav-utility a:any-link {
+  color: var(--ink-on-deep);
+  text-decoration: none;
 }
 
-/* hamburger */
+header nav .nav-utility a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+header nav .nav-utility a:focus-visible {
+  outline-color: var(--gold-on-dark);
+}
+
+/* ── brand ── */
+header nav .nav-brand {
+  grid-area: brand;
+  display: flex;
+  align-items: center;
+}
+
+/* Deterministic nav-row height (#81): the reservation in styles.css only
+   protects against CLS if the real height matches it. min-height pins the row
+   at the prototype's 78px whether or not the brand mark has loaded. */
+header nav .nav-brand .default-content-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 78px;
+  padding: 16px 0 16px var(--gutter);
+}
+
+header nav .nav-brand p {
+  margin: 0;
+  max-width: none;
+  color: inherit;
+}
+
+header nav .nav-brand a:any-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+header nav .nav-brand img,
+header nav .nav-brand picture {
+  width: 38px;
+  height: 38px;
+  flex: none;
+}
+
+header nav .nav-brand strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  font-variation-settings: 'opsz' 24;
+  line-height: 1.1;
+}
+
+header nav .nav-brand em {
+  display: block;
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* ── primary links ── */
+header nav .nav-sections {
+  grid-area: sections;
+  flex: 1 1 auto;
+  display: none;
+  visibility: hidden;
+  background: var(--paper);
+}
+
+header nav[aria-expanded='true'] .nav-sections {
+  display: block;
+  visibility: visible;
+  align-self: start;
+  border-top: 1px solid var(--line);
+}
+
+header nav .nav-sections ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+header nav .nav-sections .default-content-wrapper > ul {
+  display: flex;
+  flex-direction: column;
+  padding: 8px var(--gutter) 16px;
+}
+
+header nav .nav-sections .default-content-wrapper > ul > li {
+  font-weight: 500;
+  padding-block: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+header nav .nav-sections a:any-link {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* ── tools ── */
+header nav .nav-tools {
+  grid-area: tools;
+  padding-right: var(--gutter);
+}
+
+header nav .nav-tools p {
+  margin: 0;
+  max-width: none;
+}
+
+/* ── hamburger ── */
 header nav .nav-hamburger {
   grid-area: hamburger;
   height: 22px;
   display: flex;
   align-items: center;
+  padding-left: var(--gutter);
 }
 
 header nav .nav-hamburger button {
@@ -72,11 +195,12 @@ header nav .nav-hamburger button {
   border: 0;
   border-radius: 0;
   padding: 0;
-  background-color: var(--background-color);
+  background-color: var(--paper);
   color: inherit;
   overflow: initial;
   text-overflow: initial;
   white-space: initial;
+  cursor: pointer;
 }
 
 header nav .nav-hamburger-icon,
@@ -86,6 +210,9 @@ header nav .nav-hamburger-icon::after {
   display: block;
   position: relative;
   width: 20px;
+  height: 2px;
+  border-radius: 1px;
+  background: currentcolor;
 }
 
 header nav .nav-hamburger-icon::before,
@@ -95,178 +222,97 @@ header nav .nav-hamburger-icon::after {
   background: currentcolor;
 }
 
-header nav[aria-expanded='false'] .nav-hamburger-icon,
-header nav[aria-expanded='false'] .nav-hamburger-icon::before,
-header nav[aria-expanded='false'] .nav-hamburger-icon::after {
-  height: 2px;
-  border-radius: 2px;
-  background: currentcolor;
-}
-
-header nav[aria-expanded='false'] .nav-hamburger-icon::before {
+header nav .nav-hamburger-icon::before {
   top: -6px;
 }
 
-header nav[aria-expanded='false'] .nav-hamburger-icon::after {
+header nav .nav-hamburger-icon::after {
   top: 6px;
 }
 
 header nav[aria-expanded='true'] .nav-hamburger-icon {
   height: 22px;
+  background: initial;
 }
 
-header nav[aria-expanded='true'] .nav-hamburger-icon::before,
+header nav[aria-expanded='true'] .nav-hamburger-icon::before {
+  top: 3px;
+  transform: rotate(45deg);
+}
+
 header nav[aria-expanded='true'] .nav-hamburger-icon::after {
   top: 3px;
-  left: 1px;
-  transform: rotate(45deg);
-  transform-origin: 2px 1px;
-  width: 24px;
-  height: 2px;
-  border-radius: 2px;
-}
-
-header nav[aria-expanded='true'] .nav-hamburger-icon::after {
-  top: unset;
-  bottom: 3px;
   transform: rotate(-45deg);
 }
 
+/* ── desktop ── */
 @media (width >= 900px) {
+  /* the stock desktop reset — without it toggleMenu(…, isDesktop.matches)
+     leaves aria-expanded="true" and the fixed nav grows to 100dvh, covering
+     the whole page */
+  header nav[aria-expanded='true'] {
+    min-height: 0;
+    overflow: visible;
+  }
+
+  header nav {
+    display: grid;
+    grid-template:
+      'utility utility utility' auto
+      'brand sections tools' auto / auto 1fr auto;
+    max-width: none;
+  }
+
   header nav .nav-hamburger {
     display: none;
     visibility: hidden;
   }
-}
 
-/* brand */
-header .nav-brand {
-  grid-area: brand;
-  flex-basis: 128px;
-  font-size: var(--heading-font-size-s);
-  font-weight: 700;
-  line-height: 1;
-}
+  header nav .nav-brand .default-content-wrapper {
+    padding-left: max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter)));
+  }
 
-header nav .nav-brand img {
-  width: 128px;
-  height: auto;
-}
+  header nav .nav-tools {
+    padding-right: max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter)));
+  }
 
-/* sections */
-header nav .nav-sections {
-  grid-area: sections;
-  flex: 1 1 auto;
-  display: none;
-  visibility: hidden;
-}
-
-header nav[aria-expanded='true'] .nav-sections {
-  display: block;
-  visibility: visible;
-  align-self: start;
-}
-
-header nav .nav-sections ul {
-  list-style: none;
-  padding-left: 0;
-  font-size: var(--body-font-size-s);
-}
-
-header nav .nav-sections ul > li {
-  font-weight: 500;
-}
-
-header nav .nav-sections ul > li > ul {
-  margin-top: 0;
-}
-
-header nav .nav-sections ul > li > ul > li {
-  font-weight: 400;
-}
-
-@media (width >= 900px) {
   header nav .nav-sections {
     display: block;
     visibility: visible;
     white-space: nowrap;
+    border-top: 0;
   }
 
   header nav[aria-expanded='true'] .nav-sections {
     align-self: unset;
+    border-top: 0;
   }
 
-  header nav .nav-sections .nav-drop {
-    position: relative;
-    padding-right: 16px;
-    cursor: pointer;
-  }
-
-  header nav .nav-sections .nav-drop::after {
-    content: '';
-    display: inline-block;
-    position: absolute;
-    top: 0.5em;
-    right: 2px;
-    transform: rotate(135deg);
-    width: 6px;
-    height: 6px;
-    border: 2px solid currentcolor;
-    border-radius: 0 1px 0 0;
-    border-width: 2px 2px 0 0;
-  }
-
-  header nav .nav-sections .nav-drop[aria-expanded='true']::after {
-    top: unset;
-    bottom: 0.5em;
-    transform: rotate(315deg);
-  }
-
-  header nav .nav-sections ul {
+  header nav .nav-sections .default-content-wrapper > ul {
     display: flex;
-    gap: 24px;
-    margin: 0;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 26px;
+    padding: 0;
+    margin-right: 24px;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li {
-    flex: 0 1 auto;
-    position: relative;
+    padding-block: 6px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 140ms cubic-bezier(0.42, 0, 0, 1);
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > ul {
-    display: none;
-    position: relative;
+  header nav .nav-sections .default-content-wrapper > ul > li:hover {
+    border-bottom-color: var(--gold-deep);
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
-    display: block;
-    position: absolute;
-    left: -24px;
-    width: 200px;
-    top: 150%;
-    padding: 16px;
-    background-color: var(--light-color);
-    white-space: initial;
+  header nav .nav-sections a:any-link {
+    font-size: 15px;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > ul::before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: 16px;
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 8px solid var(--light-color);
+  /* the nav row sits on paper with the captured 1px rule and no shadow */
+  header .nav-wrapper {
+    border-bottom: 1px solid var(--line);
   }
-
-  header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
-    padding: 8px 0;
-  }
-}
-
-/* tools */
-header nav .nav-tools {
-  grid-area: tools;
 }

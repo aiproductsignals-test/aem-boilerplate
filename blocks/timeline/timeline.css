@@ -1,0 +1,42 @@
+/*
+ * timeline — top-ruled rows with a mono year gutter, on pine.
+ */
+
+.timeline .timeline-list {
+  margin-top: 26px;
+}
+
+.timeline .timeline-entry {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr);
+  gap: 18px;
+  padding-block: 14px;
+  border-top: 1px solid var(--line-on-dark);
+  align-items: baseline;
+}
+
+.timeline .timeline-year p {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--gold-on-dark);
+  margin: 0;
+  max-width: none;
+}
+
+.timeline .timeline-body p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-on-dark-soft);
+  margin: 0;
+  max-width: none;
+}
+
+@media (width <= 640px) {
+  .timeline .timeline-entry {
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 14px;
+  }
+}

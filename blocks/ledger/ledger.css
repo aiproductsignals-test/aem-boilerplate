@@ -1,0 +1,148 @@
+/*
+ * ledger — the signature component. White card, the one shadow when it sits on
+ * a dark ground, mono right-aligned figures, uppercase column heads.
+ * The captured elevation rule: a card gets the shadow ONLY on a dark ground;
+ * on light grounds it takes a 1px line border instead.
+ */
+
+.ledger .ledger-card {
+  background: var(--card);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px 28px 22px;
+}
+
+/* on the dark sections the card floats instead */
+.section.dark .ledger .ledger-card,
+.section.heritage-section .ledger .ledger-card {
+  border-color: transparent;
+  box-shadow: var(--shadow-on-dark);
+}
+
+/* Wrappers carry the classes; the authored elements are styled through them
+   as descendants, so the workspace editor's re-render still matches (EW2). */
+.ledger .ledger-title :is(h2, h3, h4, p) {
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+.ledger .ledger-sub :is(p, h4) {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin-top: 4px;
+  max-width: none;
+}
+
+.ledger .ledger-head {
+  margin-bottom: 16px;
+}
+
+.ledger table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ledger th {
+  font-family: var(--font-body);
+  font-size: var(--t-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-align: left;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.ledger th.num,
+.ledger td.num {
+  text-align: right;
+}
+
+.ledger td {
+  padding-block: 12px;
+  border-bottom: 1px solid var(--line);
+  font-size: 14.5px;
+  line-height: 1.5;
+  vertical-align: baseline;
+}
+
+.ledger td.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+  font-size: var(--t-figure);
+  white-space: nowrap;
+}
+
+.ledger td p,
+.ledger th p {
+  margin: 0;
+  max-width: none;
+  color: inherit;
+  font: inherit;
+}
+
+/* the emphasis row: the comparison the table exists to make */
+.ledger tr.total td {
+  border-bottom: none;
+  font-weight: 700;
+  padding-top: 16px;
+}
+
+.ledger tr.total td strong {
+  font-weight: 700;
+}
+
+.ledger tr.total td.num {
+  font-size: 30px;
+  line-height: 1.1;
+  font-weight: 500;
+  color: var(--pine);
+}
+
+.ledger .ledger-foot {
+  margin-top: 14px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.ledger .ledger-foot p {
+  margin: 0;
+  max-width: none;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.ledger .ledger-foot a:any-link {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.ledger .ledger-foot a:hover {
+  text-decoration: underline;
+}
+
+@media (width <= 640px) {
+  .ledger .ledger-card {
+    padding: 20px 18px 18px;
+  }
+
+  .ledger tr.total td.num {
+    font-size: 26px;
+  }
+
+  .ledger td {
+    padding-block: 10px;
+    font-size: 13.5px;
+  }
+}
