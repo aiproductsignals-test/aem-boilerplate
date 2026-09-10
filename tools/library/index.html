@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- stardust:provenance
+  generated_by: prototype
+  date: 2026-09-09
+  note: Birch Creek Health email pattern library — DA.live app.
+        Preview/HTML toggle over canonical files fetched from GitHub;
+        edits write back as pull requests. Git remains the sole source
+        of truth; DA hosts the chrome, never the content.
+  runs: standalone, or registered as a DA.live plugin / served from
+        the EDS repo at /tools/library/
+-->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Birch Creek Health · Email pattern library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+<style>
+:root{
+  --bark:#FBFAF7;        /* birch paper */
+  --heartwood:#2E2318;   /* warm brown ink */
+  --spruce:#1F5A43;      /* primary green */
+  --spruce-deep:#14402F;
+  --shallows:#E8EFEA;    /* pale water surface */
+  --lenticel:#C9C2B4;    /* bark-dash hairlines */
+  --faded:#6E6558;       /* secondary ink */
+  --alert:#8A3B12;       /* error ink, oxidized */
+  --sans:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --serif:"Fraunces",Georgia,serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%}
+body{background:var(--bark);color:var(--heartwood);font-family:var(--sans);font-size:14px;line-height:1.5;display:flex;flex-direction:column}
+button{font-family:var(--sans);font-size:13px;cursor:pointer}
+:focus-visible{outline:2px solid var(--spruce);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+
+/* ---- Masthead ---- */
+header.mast{display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--heartwood);background:var(--bark)}
+header.mast .mark{display:flex;align-items:baseline;gap:10px}
+header.mast .mark .brand{font-family:var(--serif);font-weight:600;font-size:18px;letter-spacing:-0.01em}
+header.mast .mark .app{font-size:13px;color:var(--faded)}
+/* lenticel dashes — the bark motif */
+.lenticels{flex:1;height:8px;background-image:repeating-linear-gradient(90deg,var(--lenticel) 0 14px,transparent 14px 38px,var(--lenticel) 38px 44px,transparent 44px 80px);background-size:80px 2px;background-position:0 3px;background-repeat:repeat-x}
+header.mast .conn{display:flex;align-items:center;gap:10px}
+.conn .dot{width:8px;height:8px;border-radius:50%;background:var(--lenticel)}
+.conn .dot.on{background:var(--spruce)}
+.conn .who{font-size:12.5px;color:var(--faded);max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.btn{border:1px solid var(--heartwood);background:var(--bark);color:var(--heartwood);padding:7px 14px;border-radius:4px;font-weight:500}
+.btn:hover{background:var(--shallows)}
+.btn.primary{background:var(--spruce);border-color:var(--spruce);color:#fff}
+.btn.primary:hover{background:var(--spruce-deep)}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.quiet{border-color:transparent}
+.btn.quiet:hover{border-color:var(--lenticel)}
+
+/* ---- Frame ---- */
+main.frame{flex:1;display:flex;min-height:0}
+aside.rail{width:264px;flex-shrink:0;border-right:1px solid var(--lenticel);display:flex;flex-direction:column;background:var(--bark)}
+.rail .railhead{padding:16px 16px 10px}
+.rail .railhead h2{font-family:var(--serif);font-weight:600;font-size:15px;margin:0 0 2px}
+.rail .railhead .count{font-size:12px;color:var(--faded)}
+.rail .refrow{padding:0 16px 12px;display:flex;gap:8px;align-items:center}
+.rail select{width:100%;font-family:var(--sans);font-size:12.5px;padding:6px 8px;border:1px solid var(--lenticel);border-radius:4px;background:#fff;color:var(--heartwood)}
+.rail ul{list-style:none;margin:0;padding:6px 8px;overflow-y:auto;flex:1}
+.rail li button{display:block;width:100%;text-align:left;border:0;background:none;padding:9px 10px;border-radius:4px;color:var(--heartwood)}
+.rail li button:hover{background:var(--shallows)}
+.rail li button.active{background:var(--spruce);color:#fff}
+.rail li .fname{font-weight:500;font-size:13.5px}
+.rail li .fpath{display:block;font-size:11.5px;color:var(--faded);margin-top:1px}
+.rail li button.active .fpath{color:rgba(255,255,255,.75)}
+.rail .railfoot{padding:12px 16px;border-top:1px solid var(--lenticel);font-size:12px;color:var(--faded)}
+.rail .railfoot b{color:var(--heartwood);font-weight:600}
+
+/* ---- Specimen pane ---- */
+section.pane{flex:1;display:flex;flex-direction:column;min-width:0;background:var(--shallows)}
+.toolbar{display:flex;align-items:center;gap:14px;padding:12px 20px;background:var(--bark);border-bottom:1px solid var(--lenticel)}
+.toolbar .title{font-family:var(--serif);font-weight:600;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toolbar .dirty{display:none;font-size:12px;color:var(--alert);font-weight:600}
+.toolbar .dirty.show{display:inline}
+.toolbar .spacer{flex:1}
+
+/* the two-position switch — the one loud element */
+.switch{display:flex;border:1.5px solid var(--heartwood);border-radius:6px;overflow:hidden;background:var(--bark)}
+.switch button{border:0;background:none;padding:9px 22px;font-weight:600;font-size:13.5px;color:var(--heartwood);position:relative;transition:background .15s,color .15s}
+.switch button+button{border-left:1.5px solid var(--heartwood)}
+.switch button[aria-pressed="true"]{background:var(--heartwood);color:var(--bark)}
+
+.viewport{display:flex;border:1px solid var(--lenticel);border-radius:4px;overflow:hidden}
+.viewport button{border:0;background:var(--bark);padding:7px 12px;font-size:12.5px;color:var(--faded)}
+.viewport button+button{border-left:1px solid var(--lenticel)}
+.viewport button[aria-pressed="true"]{background:var(--shallows);color:var(--heartwood);font-weight:600}
+
+.stage{flex:1;min-height:0;position:relative}
+.stage .view{position:absolute;inset:0;display:none}
+.stage .view.show{display:block}
+#previewView{overflow:auto;padding:32px 20px}
+#previewFrame{display:block;margin:0 auto;background:#fff;border:1px solid var(--lenticel);box-shadow:0 1px 0 var(--lenticel);width:640px;max-width:100%;height:calc(100% - 8px);min-height:480px}
+#previewFrame.mobile{width:390px}
+#htmlView .CodeMirror{height:100%;font-family:var(--mono);font-size:13px;line-height:1.55;background:#fff;color:var(--heartwood)}
+#htmlView textarea.fallback{width:100%;height:100%;border:0;padding:20px;font-family:var(--mono);font-size:13px;background:#fff;color:var(--heartwood);resize:none}
+.cm-s-birch .cm-tag{color:var(--spruce)}
+.cm-s-birch .cm-attribute{color:#7A5C1E}
+.cm-s-birch .cm-string{color:#8A3B12}
+.cm-s-birch .cm-comment{color:var(--faded);font-style:italic}
+.CodeMirror-gutters{background:var(--bark);border-right:1px solid var(--lenticel)}
+
+/* empty state */
+.empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:40px}
+.empty .card{max-width:480px;text-align:center}
+.empty h3{font-family:var(--serif);font-weight:600;font-size:20px;margin:0 0 10px}
+.empty p{color:var(--faded);margin:0 0 20px}
+
+/* ---- Dialogs ---- */
+dialog{border:1.5px solid var(--heartwood);border-radius:6px;background:var(--bark);color:var(--heartwood);padding:0;max-width:520px;width:calc(100% - 40px)}
+dialog::backdrop{background:rgba(46,35,24,.45)}
+dialog .dhead{padding:18px 22px 0}
+dialog .dhead h3{font-family:var(--serif);font-weight:600;font-size:19px;margin:0}
+dialog .dbody{padding:14px 22px 22px}
+dialog label{display:block;font-size:12.5px;font-weight:600;margin:14px 0 5px}
+dialog label span.hint{font-weight:400;color:var(--faded)}
+dialog input[type=text],dialog input[type=password],dialog textarea{width:100%;padding:8px 10px;border:1px solid var(--lenticel);border-radius:4px;font-family:var(--sans);font-size:13.5px;background:#fff;color:var(--heartwood)}
+dialog textarea{font-family:var(--mono);font-size:12.5px;min-height:70px;resize:vertical}
+dialog .row{display:flex;gap:12px}
+dialog .row>div{flex:1}
+dialog .dfoot{display:flex;justify-content:flex-end;gap:10px;padding:0 22px 20px}
+dialog .note{font-size:12px;color:var(--faded);margin-top:8px;line-height:1.55}
+dialog .note.warn{color:var(--alert)}
+
+/* PR progress */
+.steps{list-style:none;margin:14px 0 0;padding:0}
+.steps li{display:flex;gap:10px;align-items:baseline;padding:6px 0;font-size:13.5px;color:var(--faded)}
+.steps li .tick{width:16px;flex-shrink:0;font-family:var(--mono)}
+.steps li.doing{color:var(--heartwood)}
+.steps li.done{color:var(--spruce);font-weight:500}
+.steps li.fail{color:var(--alert);font-weight:500}
+.prlink{display:none;margin-top:16px;padding:12px 14px;background:var(--shallows);border:1px solid var(--spruce);border-radius:4px;font-size:13.5px}
+.prlink.show{display:block}
+.prlink a{color:var(--spruce);font-weight:600}
+
+/* toast */
+#toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,8px);background:var(--heartwood);color:var(--bark);padding:10px 18px;border-radius:5px;font-size:13.5px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:80%}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:760px){
+  aside.rail{width:200px}
+  .toolbar{flex-wrap:wrap;row-gap:8px}
+  #previewFrame{width:100%}
+}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="mark">
+    <span class="brand">Birch Creek Health</span>
+    <span class="app">Email pattern library</span>
+  </div>
+  <div class="lenticels" aria-hidden="true"></div>
+  <div class="conn">
+    <span class="dot" id="connDot"></span>
+    <span class="who" id="connWho">Sample patterns — not connected</span>
+    <button class="btn quiet" id="settingsBtn">Repository settings</button>
+  </div>
+</header>
+
+<main class="frame">
+  <aside class="rail">
+    <div class="railhead">
+      <h2>Patterns</h2>
+      <span class="count" id="patternCount">—</span>
+    </div>
+    <div class="refrow">
+      <select id="refSelect" aria-label="Branch to view" title="Branch to view"></select>
+      <button class="btn quiet" id="refreshBtn" title="Reload file list">Reload</button>
+    </div>
+    <ul id="patternList"></ul>
+    <div class="railfoot" id="railFoot">Files are read from <b>Git</b>. DA hosts this app, never the patterns.</div>
+  </aside>
+
+  <section class="pane">
+    <div class="toolbar">
+      <span class="title" id="specTitle">No pattern open</span>
+      <span class="dirty" id="dirtyFlag">Edited — not yet proposed</span>
+      <span class="spacer"></span>
+      <div class="viewport" id="viewportCtl" role="group" aria-label="Preview width">
+        <button id="vpDesktop" aria-pressed="true">640</button>
+        <button id="vpMobile" aria-pressed="false">390</button>
+      </div>
+      <div class="switch" role="group" aria-label="Preview or HTML">
+        <button id="tabPreview" aria-pressed="true">Preview</button>
+        <button id="tabHtml" aria-pressed="false">HTML</button>
+      </div>
+      <button class="btn" id="revertBtn" disabled>Discard edits</button>
+      <button class="btn primary" id="proposeBtn" disabled>Propose change</button>
+    </div>
+    <div class="stage">
+      <div class="view show" id="previewView"><iframe id="previewFrame" title="Email preview" sandbox="allow-same-origin"></iframe></div>
+      <div class="view" id="htmlView"></div>
+      <div class="empty" id="emptyState" hidden>
+        <div class="card">
+          <h3>Nothing here yet</h3>
+          <p>Connect a repository to load canonical patterns, or pick a sample from the list to explore how the library works.</p>
+          <button class="btn primary" id="emptySettings">Repository settings</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dialog id="settingsDlg">
+  <div class="dhead"><h3>Repository settings</h3></div>
+  <div class="dbody">
+    <div class="row">
+      <div><label for="cfgOwner">Owner</label><input type="text" id="cfgOwner" placeholder="aiproductsignals-test" autocomplete="off"></div>
+      <div><label for="cfgRepo">Repository</label><input type="text" id="cfgRepo" placeholder="birch-creek" autocomplete="off"></div>
+    </div>
+    <div class="row">
+      <div><label for="cfgBranch">Base branch</label><input type="text" id="cfgBranch" placeholder="main" autocomplete="off"></div>
+      <div><label for="cfgPath">Patterns folder <span class="hint">in the repo</span></label><input type="text" id="cfgPath" placeholder="fragments/emails" autocomplete="off"></div>
+    </div>
+    <label for="cfgToken">Fine-grained personal access token</label>
+    <input type="password" id="cfgToken" placeholder="github_pat_…" autocomplete="off">
+    <p class="note">Needs <b>Contents: read &amp; write</b> and <b>Pull requests: read &amp; write</b>, scoped to this one repository. The token stays in this browser's local storage and is sent only to api.github.com.</p>
+    <p class="note warn">Shared machine? Use "Save without token" and paste the token each session instead.</p>
+  </div>
+  <div class="dfoot">
+    <button class="btn" id="cfgCancel">Cancel</button>
+    <button class="btn" id="cfgSaveNoToken">Save without token</button>
+    <button class="btn primary" id="cfgSave">Save and connect</button>
+  </div>
+</dialog>
+
+<dialog id="proposeDlg">
+  <div class="dhead"><h3>Propose change</h3></div>
+  <div class="dbody">
+    <label for="prTitle">Pull request title</label>
+    <input type="text" id="prTitle" autocomplete="off">
+    <label for="prBody">Description <span class="hint">what changed and why</span></label>
+    <textarea id="prBody"></textarea>
+    <ul class="steps" id="prSteps" hidden>
+      <li data-step="branch"><span class="tick">·</span><span>Create branch from base</span></li>
+      <li data-step="commit"><span class="tick">·</span><span>Commit edited file</span></li>
+      <li data-step="pr"><span class="tick">·</span><span>Open pull request</span></li>
+    </ul>
+    <div class="prlink" id="prResult"></div>
+  </div>
+  <div class="dfoot">
+    <button class="btn" id="prCancel">Close</button>
+    <button class="btn primary" id="prGo">Create pull request</button>
+  </div>
+</dialog>
+
+<div id="toast" role="status"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
+<script>
+"use strict";
+
+/* =====================================================================
+   Birch Creek Health — email pattern library
+   Git is the sole source of truth. This app reads canonical files from
+   GitHub, previews them, and writes edits back as pull requests.
+   ===================================================================== */
+
+/* ---------- embedded samples (used until a repository is connected) -- */
+
+const SAMPLE_WELCOME = [
+'<!DOCTYPE html>',
+'<html lang="en">',
+'<head>',
+'<meta charset="utf-8">',
+'<meta name="viewport" content="width=device-width,initial-scale=1.0">',
+'<title>Welcome to Birch Creek Health</title>',
+'</head>',
+'<body style="margin:0;padding:0;background-color:#EFEDE7;">',
+'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#EFEDE7;">',
+'<tr><td align="center" style="padding:24px 12px;">',
+'<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:100%;background-color:#FBFAF7;">',
+'  <tr><td style="background-color:#1F5A43;padding:28px 40px;">',
+'    <span style="font-family:Georgia,serif;font-size:20px;font-weight:bold;color:#FBFAF7;">Birch Creek Health</span>',
+'  </td></tr>',
+'  <tr><td style="padding:36px 40px 8px;">',
+'    <h1 style="margin:0 0 16px;font-family:Georgia,serif;font-size:26px;line-height:1.25;color:#2E2318;">',
+'      Welcome, <span data-slot="member.firstName">Dana</span>. Your plan starts here.</h1>',
+'    <p style="margin:0 0 16px;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#2E2318;">',
+'      Your <span data-slot="plan.name">Chippewa</span> plan is active. Everything below can be',
+'      verified in your member portal &mdash; we will never ask you to take our word for it.</p>',
+'  </td></tr>',
+'  <tr><td style="padding:8px 40px;">',
+'    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">',
+'      <tr><td style="border-top:2px solid #C9C2B4;padding:14px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.55;color:#2E2318;">',
+'        <strong>Member ID:</strong> <span data-slot="member.id">BCH-000000</span></td></tr>',
+'      <tr><td style="border-top:1px solid #C9C2B4;padding:14px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.55;color:#2E2318;">',
+'        <strong>Primary clinic:</strong> <span data-slot="member.clinic">Eau Claire &mdash; Water Street</span></td></tr>',
+'      <tr><td style="border-top:1px solid #C9C2B4;border-bottom:2px solid #C9C2B4;padding:14px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.55;color:#2E2318;">',
+'        <strong>Coverage begins:</strong> <span data-slot="plan.startDate">January 1</span></td></tr>',
+'    </table>',
+'  </td></tr>',
+'  <tr><td align="left" style="padding:24px 40px 8px;">',
+'    <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>',
+'      <td style="background-color:#1F5A43;border-radius:4px;">',
+'        <a href="https://example.com/portal" style="display:inline-block;padding:13px 28px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;color:#FBFAF7;text-decoration:none;">Set up your member portal</a>',
+'      </td></tr></table>',
+'  </td></tr>',
+'  <tr><td style="padding:28px 40px 36px;">',
+'    <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.6;color:#6E6558;">',
+'      Birch Creek Health, Eau Claire, Wisconsin. You are receiving this because you enrolled in a',
+'      Birch Creek plan. <a href="https://example.com/preferences" style="color:#1F5A43;">Manage preferences</a></p>',
+'  </td></tr>',
+'</table>',
+'</td></tr></table>',
+'</body>',
+'</html>'
+].join('\n');
+
+const SAMPLE_EOB = [
+'<!DOCTYPE html>',
+'<html lang="en">',
+'<head>',
+'<meta charset="utf-8">',
+'<meta name="viewport" content="width=device-width,initial-scale=1.0">',
+'<title>Your explanation of benefits is ready</title>',
+'</head>',
+'<body style="margin:0;padding:0;background-color:#EFEDE7;">',
+'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#EFEDE7;">',
+'<tr><td align="center" style="padding:24px 12px;">',
+'<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:100%;background-color:#FBFAF7;">',
+'  <tr><td style="border-bottom:3px solid #1F5A43;padding:24px 40px;">',
+'    <span style="font-family:Georgia,serif;font-size:18px;font-weight:bold;color:#1F5A43;">Birch Creek Health</span>',
+'  </td></tr>',
+'  <tr><td style="padding:32px 40px 4px;">',
+'    <h1 style="margin:0 0 14px;font-family:Georgia,serif;font-size:24px;line-height:1.3;color:#2E2318;">',
+'      Your explanation of benefits for <span data-slot="claim.month">March</span> is ready</h1>',
+'    <p style="margin:0 0 18px;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#2E2318;">',
+'      This is not a bill. It shows what your provider charged, what your plan covered,',
+'      and what &mdash; if anything &mdash; you may owe.</p>',
+'  </td></tr>',
+'  <tr><td style="padding:4px 40px;">',
+'    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#E8EFEA;">',
+'      <tr><td style="padding:18px 22px;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.7;color:#2E2318;">',
+'        Claim <span data-slot="claim.id">BCH-CLM-0000</span> &mdash;',
+'        <span data-slot="claim.provider">Water Street Family Medicine</span><br>',
+'        Plan paid: <strong data-slot="claim.planPaid">$0.00</strong> &nbsp;&nbsp;',
+'        Your share: <strong data-slot="claim.memberOwes">$0.00</strong>',
+'      </td></tr>',
+'    </table>',
+'  </td></tr>',
+'  <tr><td align="left" style="padding:22px 40px 6px;">',
+'    <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>',
+'      <td style="background-color:#1F5A43;border-radius:4px;">',
+'        <a href="https://example.com/eob" style="display:inline-block;padding:12px 26px;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;color:#FBFAF7;text-decoration:none;">Review the details</a>',
+'      </td></tr></table>',
+'    <p style="margin:14px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:1.6;color:#6E6558;">',
+'      Numbers not matching what you expected? Call the member line and ask us to walk through it with you.</p>',
+'  </td></tr>',
+'  <tr><td style="padding:26px 40px 34px;">',
+'    <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.6;color:#6E6558;">',
+'      Birch Creek Health, Eau Claire, Wisconsin.',
+'      <a href="https://example.com/preferences" style="color:#1F5A43;">Manage preferences</a></p>',
+'  </td></tr>',
+'</table>',
+'</td></tr></table>',
+'</body>',
+'</html>'
+].join('\n');
+
+const SAMPLE_PREVENTIVE = [
+'<!DOCTYPE html>',
+'<html lang="en">',
+'<head>',
+'<meta charset="utf-8">',
+'<meta name="viewport" content="width=device-width,initial-scale=1.0">',
+'<title>A checkup you have already paid for</title>',
+'</head>',
+'<body style="margin:0;padding:0;background-color:#EFEDE7;">',
+'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#EFEDE7;">',
+'<tr><td align="center" style="padding:24px 12px;">',
+'<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:100%;background-color:#FBFAF7;">',
+'  <tr><td style="background-color:#1F5A43;padding:26px 40px;">',
+'    <span style="font-family:Georgia,serif;font-size:18px;font-weight:bold;color:#FBFAF7;">Birch Creek Health</span>',
+'  </td></tr>',
+'  <tr><td style="padding:34px 40px 8px;">',
+'    <h1 style="margin:0 0 14px;font-family:Georgia,serif;font-size:25px;line-height:1.3;color:#2E2318;">',
+'      <span data-slot="member.firstName">Dana</span>, your annual wellness visit costs you nothing</h1>',
+'    <p style="margin:0 0 16px;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#2E2318;">',
+'      Preventive care is covered in full on the <span data-slot="plan.name">Chippewa</span> plan &mdash;',
+'      no copay, no deductible. Check the coverage yourself in your portal before you book;',
+'      it is listed under Preventive services.</p>',
+'  </td></tr>',
+'  <tr><td style="padding:6px 40px;">',
+'    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">',
+'      <tr><td style="border-left:4px solid #1F5A43;background-color:#E8EFEA;padding:16px 20px;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.65;color:#2E2318;">',
+'        Covered at your last visit&rsquo;s clinic:',
+'        <span data-slot="member.clinic">Eau Claire &mdash; Water Street</span>.',
+'        Most members book within <strong>10 days</strong> this time of year.</td></tr>',
+'    </table>',
+'  </td></tr>',
+'  <tr><td align="left" style="padding:24px 40px 8px;">',
+'    <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>',
+'      <td style="background-color:#1F5A43;border-radius:4px;">',
+'        <a href="https://example.com/schedule" style="display:inline-block;padding:13px 28px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;color:#FBFAF7;text-decoration:none;">Schedule your visit</a>',
+'      </td></tr></table>',
+'  </td></tr>',
+'  <tr><td style="padding:28px 40px 36px;">',
+'    <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.6;color:#6E6558;">',
+'      Birch Creek Health, Eau Claire, Wisconsin.',
+'      <a href="https://example.com/preferences" style="color:#1F5A43;">Manage preferences</a></p>',
+'  </td></tr>',
+'</table>',
+'</td></tr></table>',
+'</body>',
+'</html>'
+].join('\n');
+
+const SAMPLES = [
+  { name: 'welcome-email.html', path: 'samples/welcome-email.html', content: SAMPLE_WELCOME },
+  { name: 'eob-ready.html', path: 'samples/eob-ready.html', content: SAMPLE_EOB },
+  { name: 'preventive-reminder.html', path: 'samples/preventive-reminder.html', content: SAMPLE_PREVENTIVE }
+];
+
+/* ---------- state ---------------------------------------------------- */
+
+const CFG_KEY = 'bch-library-config';
+
+const state = {
+  cfg: null,            // {owner, repo, branch, path, token}
+  connected: false,
+  files: [],            // [{name, path, sha}]
+  refs: [],             // [{name, label, pr}]
+  ref: null,            // currently viewed ref (branch name)
+  current: null,        // {name, path, sha, original, content}
+  view: 'preview',
+  editor: null,
+  busy: false
+};
+
+const $ = (id) => document.getElementById(id);
+
+/* ---------- utilities ------------------------------------------------ */
+
+function toast(msg, ms) {
+  const t = $('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._h);
+  t._h = setTimeout(() => t.classList.remove('show'), ms || 3200);
+}
+
+function b64encode(str) {
+  return btoa(String.fromCharCode.apply(null, new TextEncoder().encode(str)));
+}
+function b64decode(b64) {
+  const bin = atob(b64.replace(/\n/g, ''));
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return new TextDecoder().decode(bytes);
+}
+
+function slugify(s) {
+  return s.toLowerCase().replace(/\.html?$/, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
+/* ---------- GitHub client -------------------------------------------- */
+
+async function gh(path, opts) {
+  opts = opts || {};
+  const headers = {
+    'Accept': 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28'
+  };
+  if (state.cfg && state.cfg.token) headers['Authorization'] = 'Bearer ' + state.cfg.token;
+  if (opts.body) headers['Content-Type'] = 'application/json';
+  const res = await fetch('https://api.github.com' + path, {
+    method: opts.method || 'GET',
+    headers: headers,
+    body: opts.body ? JSON.stringify(opts.body) : undefined
+  });
+  if (!res.ok) {
+    let detail = '';
+    try { detail = (await res.json()).message || ''; } catch (e) { /* ignore */ }
+    const err = new Error('GitHub ' + res.status + (detail ? ': ' + detail : ''));
+    err.status = res.status;
+    throw err;
+  }
+  return res.status === 204 ? null : res.json();
+}
+
+const repoBase = () => '/repos/' + state.cfg.owner + '/' + state.cfg.repo;
+
+async function listPatternFiles(ref) {
+  const dir = await gh(repoBase() + '/contents/' + state.cfg.path + '?ref=' + encodeURIComponent(ref));
+  return (Array.isArray(dir) ? dir : [])
+    .filter((f) => f.type === 'file' && /\.html?$/i.test(f.name))
+    .map((f) => ({ name: f.name, path: f.path, sha: f.sha }));
+}
+
+async function fetchFile(path, ref) {
+  const f = await gh(repoBase() + '/contents/' + path + '?ref=' + encodeURIComponent(ref));
+  return { name: f.name, path: f.path, sha: f.sha, content: b64decode(f.content) };
+}
+
+async function listRefs() {
+  const refs = [{ name: state.cfg.branch, label: state.cfg.branch + ' (base)', pr: null }];
+  try {
+    const prs = await gh(repoBase() + '/pulls?state=open&per_page=30');
+    prs.forEach((pr) => {
+      if (pr.head && pr.head.repo && pr.head.repo.full_name === state.cfg.owner + '/' + state.cfg.repo) {
+        refs.push({ name: pr.head.ref, label: 'PR #' + pr.number + ' — ' + pr.head.ref, pr: pr.number });
+      }
+    });
+  } catch (e) { /* PR listing is a nicety; base branch still works */ }
+  return refs;
+}
+
+/* ---------- rendering ------------------------------------------------ */
+
+function renderRefs() {
+  const sel = $('refSelect');
+  sel.innerHTML = '';
+  if (!state.connected) {
+    const o = document.createElement('option');
+    o.textContent = 'Sample set (no repository)';
+    sel.appendChild(o);
+    sel.disabled = true;
+    return;
+  }
+  sel.disabled = false;
+  state.refs.forEach((r) => {
+    const o = document.createElement('option');
+    o.value = r.name;
+    o.textContent = r.label;
+    if (r.name === state.ref) o.selected = true;
+    sel.appendChild(o);
+  });
+}
+
+function renderList() {
+  const ul = $('patternList');
+  ul.innerHTML = '';
+  const files = state.connected ? state.files : SAMPLES;
+  $('patternCount').textContent = files.length + (files.length === 1 ? ' pattern' : ' patterns') +
+    (state.connected ? '' : ' — samples');
+  files.forEach((f) => {
+    const li = document.createElement('li');
+    const b = document.createElement('button');
+    b.innerHTML = '<span class="fname"></span><span class="fpath"></span>';
+    b.querySelector('.fname').textContent = f.name.replace(/\.html?$/, '');
+    b.querySelector('.fpath').textContent = f.path;
+    if (state.current && state.current.path === f.path) b.classList.add('active');
+    b.addEventListener('click', () => openFile(f));
+    li.appendChild(b);
+    ul.appendChild(li);
+  });
+  $('emptyState').hidden = files.length > 0;
+}
+
+function renderPreview() {
+  const frame = $('previewFrame');
+  frame.srcdoc = state.current ? state.current.content : '';
+}
+
+function ensureEditor() {
+  if (state.editor) return state.editor;
+  const host = $('htmlView');
+  if (window.CodeMirror) {
+    state.editor = CodeMirror(host, {
+      value: '', mode: 'htmlmixed', theme: 'birch',
+      lineNumbers: true, lineWrapping: true, viewportMargin: 50
+    });
+    state.editor.on('change', () => {
+      if (state._loading || !state.current) return;
+      state.current.content = state.editor.getValue();
+      setDirty(state.current.content !== state.current.original);
+    });
+  } else {
+    const ta = document.createElement('textarea');
+    ta.className = 'fallback';
+    ta.addEventListener('input', () => {
+      if (!state.current) return;
+      state.current.content = ta.value;
+      setDirty(state.current.content !== state.current.original);
+    });
+    host.appendChild(ta);
+    state.editor = {
+      setValue: (v) => { ta.value = v; },
+      getValue: () => ta.value,
+      refresh: () => {}
+    };
+  }
+  return state.editor;
+}
+
+function setDirty(d) {
+  $('dirtyFlag').classList.toggle('show', d);
+  $('revertBtn').disabled = !d;
+  $('proposeBtn').disabled = !(d && state.connected);
+  $('proposeBtn').title = d && !state.connected ? 'Connect a repository to propose changes' : '';
+}
+
+function isDirty() {
+  return !!(state.current && state.current.content !== state.current.original);
+}
+
+function setView(v) {
+  state.view = v;
+  $('tabPreview').setAttribute('aria-pressed', String(v === 'preview'));
+  $('tabHtml').setAttribute('aria-pressed', String(v === 'html'));
+  $('previewView').classList.toggle('show', v === 'preview');
+  $('htmlView').classList.toggle('show', v === 'html');
+  if (v === 'preview') {
+    renderPreview();
+  } else {
+    const ed = ensureEditor();
+    if (state.current) {
+      state._loading = true;
+      ed.setValue(state.current.content);
+      state._loading = false;
+    }
+    setTimeout(() => ed.refresh && ed.refresh(), 0);
+  }
+}
+
+async function openFile(f) {
+  if (isDirty() && !confirm('Discard unproposed edits to ' + state.current.name + '?')) return;
+  try {
+    let file;
+    if (state.connected) {
+      toast('Loading ' + f.name + '…', 1200);
+      file = await fetchFile(f.path, state.ref);
+    } else {
+      file = { name: f.name, path: f.path, sha: null, content: f.content };
+    }
+    state.current = { name: file.name, path: file.path, sha: file.sha, original: file.content, content: file.content };
+    $('specTitle').textContent = file.name.replace(/\.html?$/, '');
+    setDirty(false);
+    renderList();
+    setView(state.view);
+  } catch (e) {
+    toast('Could not load file — ' + e.message, 5000);
+  }
+}
+
+/* ---------- config & connection -------------------------------------- */
+
+function loadConfig() {
+  try { state.cfg = JSON.parse(localStorage.getItem(CFG_KEY)) || null; }
+  catch (e) { state.cfg = null; }
+}
+
+function saveConfig(withToken) {
+  const cfg = {
+    owner: $('cfgOwner').value.trim(),
+    repo: $('cfgRepo').value.trim(),
+    branch: $('cfgBranch').value.trim() || 'main',
+    path: $('cfgPath').value.trim().replace(/^\/+|\/+$/g, '') || 'fragments/emails',
+    token: $('cfgToken').value.trim()
+  };
+  state.cfg = cfg;
+  const stored = Object.assign({}, cfg);
+  if (!withToken) stored.token = '';
+  localStorage.setItem(CFG_KEY, JSON.stringify(stored));
+}
+
+async function connect() {
+  if (!state.cfg || !state.cfg.owner || !state.cfg.repo) {
+    state.connected = false;
+    updateConnUI('Sample patterns — not connected');
+    renderRefs(); renderList();
+    return;
+  }
+  try {
+    updateConnUI('Connecting…');
+    state.ref = state.cfg.branch;
+    state.refs = await listRefs();
+    state.files = await listPatternFiles(state.ref);
+    state.connected = true;
+    updateConnUI(state.cfg.owner + '/' + state.cfg.repo + (state.cfg.token ? '' : ' (read-only, no token)'), true);
+    renderRefs(); renderList();
+    toast('Connected — ' + state.files.length + ' pattern file(s) on ' + state.ref);
+    if (state.files.length && !state.current) openFile(state.files[0]);
+  } catch (e) {
+    state.connected = false;
+    updateConnUI('Connection failed');
+    renderRefs(); renderList();
+    toast('Could not connect: ' + e.message + (e.status === 404 ? ' — check owner/repo/path, and that the token can see this repository.' : ''), 6000);
+  }
+}
+
+function updateConnUI(text, on) {
+  $('connWho').textContent = text;
+  $('connDot').classList.toggle('on', !!on);
+}
+
+/* ---------- PR flow --------------------------------------------------- */
+
+function stepState(step, cls, tick) {
+  const li = document.querySelector('#prSteps li[data-step="' + step + '"]');
+  li.className = cls;
+  li.querySelector('.tick').textContent = tick;
+}
+
+async function createPullRequest() {
+  const c = state.current;
+  const title = $('prTitle').value.trim() || ('Update ' + c.name);
+  const body = $('prBody').value.trim();
+  const branch = 'library/' + slugify(c.name) + '-' + Date.now().toString(36);
+  const steps = $('prSteps');
+  steps.hidden = false;
+  ['branch', 'commit', 'pr'].forEach((s) => stepState(s, '', '·'));
+  $('prResult').classList.remove('show');
+  $('prGo').disabled = true;
+
+  try {
+    stepState('branch', 'doing', '…');
+    const baseRef = await gh(repoBase() + '/git/ref/heads/' + encodeURIComponent(state.cfg.branch));
+    await gh(repoBase() + '/git/refs', { method: 'POST', body: { ref: 'refs/heads/' + branch, sha: baseRef.object.sha } });
+    stepState('branch', 'done', '\u2713');
+
+    stepState('commit', 'doing', '…');
+    await gh(repoBase() + '/contents/' + c.path, {
+      method: 'PUT',
+      body: { message: title, content: b64encode(c.content), branch: branch, sha: c.sha }
+    });
+    stepState('commit', 'done', '\u2713');
+
+    stepState('pr', 'doing', '…');
+    const pr = await gh(repoBase() + '/pulls', {
+      method: 'POST',
+      body: {
+        title: title,
+        head: branch,
+        base: state.cfg.branch,
+        body: body + '\n\n---\nProposed from the Birch Creek pattern library app. Render validation runs in CI; merge only on a clean check.'
+      }
+    });
+    stepState('pr', 'done', '\u2713');
+
+    const r = $('prResult');
+    r.innerHTML = 'Opened <a target="_blank" rel="noopener"></a>. The render guard runs on the PR; the library reflects it after merge and publish.';
+    const a = r.querySelector('a');
+    a.href = pr.html_url;
+    a.textContent = 'pull request #' + pr.number;
+    r.classList.add('show');
+
+    c.original = c.content; // edits are now proposed; no longer "dirty"
+    c.sha = null;           // stale vs. base until reloaded
+    setDirty(false);
+    state.refs = await listRefs();
+    renderRefs();
+    toast('Pull request #' + pr.number + ' opened');
+  } catch (e) {
+    const failing = ['branch', 'commit', 'pr'].find((s) => {
+      const li = document.querySelector('#prSteps li[data-step="' + s + '"]');
+      return li.className === 'doing';
+    });
+    if (failing) stepState(failing, 'fail', '\u2715');
+    let hint = '';
+    if (e.status === 401) hint = ' The token was rejected — paste a valid fine-grained PAT in Repository settings.';
+    if (e.status === 403) hint = ' The token lacks write permission (needs Contents and Pull requests: read & write on this repository).';
+    if (e.status === 404) hint = ' Not found — the token may not have access to this repository.';
+    if (e.status === 409 || e.status === 422) hint = ' The file changed on the base branch since it was opened — reload the pattern and re-apply the edit.';
+    toast('Pull request failed: ' + e.message + hint, 8000);
+  } finally {
+    $('prGo').disabled = false;
+  }
+}
+
+/* ---------- wiring ---------------------------------------------------- */
+
+function openSettings() {
+  const c = state.cfg || {};
+  $('cfgOwner').value = c.owner || '';
+  $('cfgRepo').value = c.repo || '';
+  $('cfgBranch').value = c.branch || 'main';
+  $('cfgPath').value = c.path || 'fragments/emails';
+  $('cfgToken').value = c.token || '';
+  $('settingsDlg').showModal();
+}
+
+function init() {
+  loadConfig();
+
+  $('settingsBtn').addEventListener('click', openSettings);
+  $('emptySettings').addEventListener('click', openSettings);
+  $('cfgCancel').addEventListener('click', () => $('settingsDlg').close());
+  $('cfgSave').addEventListener('click', () => { saveConfig(true); $('settingsDlg').close(); connect(); });
+  $('cfgSaveNoToken').addEventListener('click', () => { saveConfig(false); $('settingsDlg').close(); connect(); });
+
+  $('tabPreview').addEventListener('click', () => setView('preview'));
+  $('tabHtml').addEventListener('click', () => setView('html'));
+
+  $('vpDesktop').addEventListener('click', () => {
+    $('previewFrame').classList.remove('mobile');
+    $('vpDesktop').setAttribute('aria-pressed', 'true');
+    $('vpMobile').setAttribute('aria-pressed', 'false');
+  });
+  $('vpMobile').addEventListener('click', () => {
+    $('previewFrame').classList.add('mobile');
+    $('vpDesktop').setAttribute('aria-pressed', 'false');
+    $('vpMobile').setAttribute('aria-pressed', 'true');
+  });
+
+  $('refreshBtn').addEventListener('click', () => { if (state.connected) connect(); else renderList(); });
+  $('refSelect').addEventListener('change', async (e) => {
+    state.ref = e.target.value;
+    try {
+      state.files = await listPatternFiles(state.ref);
+      state.current = null;
+      $('specTitle').textContent = 'No pattern open';
+      setDirty(false);
+      renderList(); renderPreview();
+      toast('Viewing ' + state.ref);
+    } catch (err) { toast('Could not list ' + state.ref + ': ' + err.message, 5000); }
+  });
+
+  $('revertBtn').addEventListener('click', () => {
+    if (!state.current) return;
+    state.current.content = state.current.original;
+    setDirty(false);
+    setView(state.view);
+    toast('Edits discarded');
+  });
+
+  $('proposeBtn').addEventListener('click', () => {
+    if (!state.current) return;
+    if (!state.cfg || !state.cfg.token) { toast('Add a token in Repository settings to propose changes.', 5000); openSettings(); return; }
+    $('prTitle').value = 'Update ' + state.current.name;
+    $('prBody').value = '';
+    $('prSteps').hidden = true;
+    $('prResult').classList.remove('show');
+    $('proposeDlg').showModal();
+  });
+  $('prCancel').addEventListener('click', () => $('proposeDlg').close());
+  $('prGo').addEventListener('click', createPullRequest);
+
+  window.addEventListener('beforeunload', (e) => {
+    if (isDirty()) { e.preventDefault(); e.returnValue = ''; }
+  });
+
+  if (window.self !== window.top) {
+    $('railFoot').innerHTML = 'Running inside <b>da.live</b>. Files are read from Git; DA hosts this app, never the patterns.';
+  }
+
+  renderRefs();
+  renderList();
+  if (state.cfg && state.cfg.owner) connect();
+  else if (SAMPLES.length) openFile(SAMPLES[0]);
+}
+
+document.addEventListener('DOMContentLoaded', init);
+
+</script>
+</body>
+</html>
